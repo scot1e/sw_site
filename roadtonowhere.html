@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROADTONOWHERE</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="css/loader.css">
+
+    <!-- Prefetch страниц -->
+    <link rel="prefetch" href="releases.html">
+    <link rel="prefetch" href="gallery.html">
+    <link rel="prefetch" href="roadtonowhere.html">
+    <link rel="prefetch" href="hikes.html">
+     
+    <!-- DNS Prefetch для внешних ресурсов -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- ПК-стили -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scale.css">
+    <link rel="stylesheet" href="css/road.css">
+    
+    <!-- Мобильные стили -->
+    <link rel="stylesheet" href="mobileadapt/mobile-base.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-road.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-releases.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-gallery.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-hikes.css">
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="header-link">SCOTT WORK</a>
+            
+            <div class="burger-menu">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <a href="releases.html" class="header-link">РЕЛИЗЫ</a>
+                <a href="roadtonowhere.html" class="header-link">ROADTONOWHERE</a>
+            </nav>
+        </div>
+        
+        <div class="mobile-nav">
+            <a href="releases.html" class="mobile-nav-link">РЕЛИЗЫ</a>
+            <a href="roadtonowhere.html" class="mobile-nav-link">ROADTONOWHERE</a>
+        </div>
+    </header>
+    
+    <section class="intro-section full-screen">
+        <video class="intro-video" autoplay muted loop playsinline>
+            <source src="videos/roadtonowhere-intro.mp4" type="video/mp4">
+        </video>
+        <div class="intro-overlay"></div>
+        <div class="intro-content"></div>
+        <a href="#road-block" class="scroll-arrow">
+            <span class="arrow-down"></span>
+        </a>
+    </section>
+
+    <section id="road-block" class="road-block full-screen">
+        <div class="road-layer center-layer">
+            <div class="road-photo" style="background-image: url('images/road-center.JPG');"></div>
+            <div class="road-content">
+                <h2 class="road-title">ПОХОДЫ</h2>
+                <p class="road-hover-text">Ты прости, времени не так много, но всё же..</p>
+                <a href="hikes.html" class="road-button">ПРОГУЛЯЙСЯ СО МНОЙ</a>
+            </div>
+        </div>
+        <div class="road-layer right-layer">
+            <div class="road-photo" style="background-image: url('images/road-right.JPG');"></div>
+            <div class="road-content">
+                <h2 class="road-title"></p>ПОХОДНЫЕ</p> ЗАПИСКИ</h2>
+                <p class="road-hover-text">???</p>
+                <a href="404.html" class="road-button">СКОРО</a>
+            </div>
+        </div>
+        <div class="road-layer left-layer">
+            <div class="road-photo" style="background-image: url('images/road-left.JPG');"></div>
+            <div class="road-content">
+                <h2 class="road-title">ГАЛЕРЕЯ</h2>
+                <p class="road-hover-text">Взгляд в прошлое</p>
+                <a href="gallery.html" class="road-button">ВОСПОМИНАНИЯ?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-copyright">© 2026 SCOTT WORK</div>
+        </div>
+    </footer>
+
+    <!-- СКРИПТЫ -->
+    <script src="js/browser-detector.js"></script>
+    <script src="js/road.js"></script>
+    <script src="js/snap.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/zippo.local.js"></script>
+    <script src="js/image-optimizer.js"></script>
+
+    <!-- Экран загрузки с глитчем -->
+    <div class="loader-overlay" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-text" id="loaderText" data-text="ЗАГРУЗКА">ЗАГРУЗКА</div>
+            <div class="loader-subtext" id="loaderSubtext">SCOTT WORK</div>
+        </div>
+    </div>
+
+    <!-- Скрипт для загрузчика -->
+    <script src="js/page-loader.js"></script>
+</body>
+</html>

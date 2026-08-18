@@ -1,0 +1,35 @@
+# ========================================
+# ROBOTS.TXT - SCOTT WORK
+# ========================================
+
+User-agent: *
+Disallow: /py/
+Disallow: /backups/
+Disallow: /versions/
+Disallow: /deploy/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /test/
+Disallow: /logs/
+Disallow: /node_modules/
+Disallow: /.git/
+Allow: /
+
+User-agent: Googlebot
+Disallow: /py/
+Disallow: /backups/
+Disallow: /versions/
+Disallow: /deploy/
+Disallow: /private/
+Allow: /
+
+User-agent: Yandex
+Disallow: /py/
+Disallow: /backups/
+Disallow: /versions/
+Disallow: /deploy/
+Disallow: /private/
+Allow: /
+Host: https://scottwork.ru
+
+# Sitemap: https://scottwork.ru/sitemap.xml

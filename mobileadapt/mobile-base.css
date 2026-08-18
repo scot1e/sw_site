@@ -1,0 +1,368 @@
+/* ===== БАЗОВЫЕ МОБИЛЬНЫЕ СТИЛИ ===== */
+/* Шапка, бургер-меню, подвал, отключение снэпа */
+
+/* --- Диапазон 1: Маленькие телефоны (до 480px) --- */
+@media screen and (max-width: 480px) {
+    
+    /* ===== ШАПКА С БУРГЕРОМ ===== */
+    .site-header {
+        padding: 0.8rem 0;
+    }
+
+    .header-link {
+        font-size: 1rem;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .burger-icon {
+        width: 28px;
+        height: 18px;
+        position: relative;
+    }
+
+    .burger-icon span {
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: white;
+        border-radius: 2px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: all 0.3s ease;
+    }
+
+    .burger-icon span:nth-child(1) {
+        top: 0px;
+    }
+
+    .burger-icon span:nth-child(2) {
+        top: 8px;
+    }
+
+    .burger-icon span:nth-child(3) {
+        top: 16px;
+    }
+
+    .burger-icon.open span:nth-child(1) {
+        top: 8px;
+        transform: rotate(135deg);
+    }
+
+    .burger-icon.open span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+    }
+
+    .burger-icon.open span:nth-child(3) {
+        top: 8px;
+        transform: rotate(-135deg);
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 220px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        padding: 60px 20px 20px;
+        transition: right 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-nav.open {
+        right: 0;
+    }
+
+    .mobile-nav-link {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        text-align: right;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .mobile-nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-nav-link:active {
+        padding-right: 10px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ===== ПОДВАЛ ===== */
+    .site-footer {
+        padding: 1rem 0;
+    }
+
+    .footer-copyright {
+        font-size: 0.7rem;
+    }
+    
+    /* ===== ПОДСКАЗКА ДЛЯ МОБИЛЬНЫХ ПОЛЬЗОВАТЕЛЕЙ ===== */
+    .mobile-hint {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
+        color: white;
+        font-family: 'Raleway', sans-serif;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        z-index: 1000;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        max-width: 280px;
+        animation: hintAppear 0.3s ease;
+    }
+    
+    .hint-icon {
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+    
+    .hint-text {
+        line-height: 1.3;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .hint-close {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1rem;
+        cursor: pointer;
+        padding: 5px 8px;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0.25rem;
+    }
+    
+    .hint-close:hover,
+    .hint-close:active {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+    
+    .hint-close:active {
+        transform: scale(0.95);
+    }
+    
+    @keyframes hintAppear {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+/* --- Диапазон 2: Средние телефоны (481px - 600px) --- */
+@media screen and (min-width: 481px) and (max-width: 600px) {
+    
+    .site-header {
+        padding: 0.9rem 0;
+    }
+
+    .header-link {
+        font-size: 1.1rem;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .burger-icon {
+        width: 30px;
+        height: 20px;
+        position: relative;
+    }
+
+    .burger-icon span {
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .burger-icon span:nth-child(1) {
+        top: 0px;
+    }
+
+    .burger-icon span:nth-child(2) {
+        top: 9px;
+    }
+
+    .burger-icon span:nth-child(3) {
+        top: 18px;
+    }
+
+    .burger-icon.open span:nth-child(1) {
+        top: 9px;
+        transform: rotate(135deg);
+    }
+
+    .burger-icon.open span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+    }
+
+    .burger-icon.open span:nth-child(3) {
+        top: 9px;
+        transform: rotate(-135deg);
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        width: 250px;
+        padding: 70px 25px 25px;
+    }
+
+    .mobile-nav-link {
+        font-size: 1.2rem;
+        padding: 16px 0;
+    }
+
+    .footer-copyright {
+        font-size: 0.75rem;
+    }
+    
+    .mobile-hint {
+        bottom: 25px;
+        right: 25px;
+        font-size: 0.85rem;
+        max-width: 300px;
+    }
+}
+
+/* --- Диапазон 3: Большие телефоны (601px - 768px) --- */
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    
+    .site-header {
+        padding: 1rem 0;
+    }
+
+    .header-link {
+        font-size: 1.2rem;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .burger-icon {
+        width: 32px;
+        height: 22px;
+        position: relative;
+    }
+
+    .burger-icon span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .burger-icon span:nth-child(1) {
+        top: 0px;
+    }
+
+    .burger-icon span:nth-child(2) {
+        top: 10px;
+    }
+
+    .burger-icon span:nth-child(3) {
+        top: 20px;
+    }
+
+    .burger-icon.open span:nth-child(1) {
+        top: 10px;
+        transform: rotate(135deg);
+    }
+
+    .burger-icon.open span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+    }
+
+    .burger-icon.open span:nth-child(3) {
+        top: 10px;
+        transform: rotate(-135deg);
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        width: 280px;
+        padding: 80px 30px 30px;
+    }
+
+    .mobile-nav-link {
+        font-size: 1.3rem;
+        padding: 18px 0;
+    }
+
+    .footer-copyright {
+        font-size: 0.8rem;
+    }
+    
+    .mobile-hint {
+        bottom: 30px;
+        right: 30px;
+        font-size: 0.9rem;
+        max-width: 320px;
+    }
+}
+
+/* ===== ОТКЛЮЧАЕМ SCROLL SNAP НА МОБИЛКАХ ===== */
+@media screen and (max-width: 768px) {
+    html {
+        scroll-snap-type: none !important;
+    }
+    
+    .full-screen {
+        scroll-snap-align: none !important;
+        scroll-snap-stop: normal !important;
+    }
+}

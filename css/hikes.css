@@ -1,0 +1,308 @@
+/* ===== ПОХОДЫ ===== */
+.hikes-page {
+    overflow: hidden;
+    background-color: #000;
+}
+
+.hikes-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    gap: 3rem;
+    padding: 0 4rem;
+}
+
+.hikes-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(0.4);
+    transform: scale(1.1);
+    transition: background-image 0.5s ease;
+    z-index: 0;
+}
+
+/* ===== САЙДБАР С ВЕРТИКАЛЬНЫМ СКРОЛЛОМ ===== */
+.hikes-sidebar {
+    width: 240px;
+    height: 600px;  /* Фиксированная высота */
+    overflow-y: scroll;  /* Обычный скролл */
+    overflow-x: hidden;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    z-index: 2;
+    order: 1;
+}
+
+/* Стилизация скроллбара */
+.hikes-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.hikes-sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.hikes-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* Для Firefox */
+.hikes-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+}
+
+.hikes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hikes-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hikes-item.active {
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.hikes-thumb {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: filter 0.3s ease;
+}
+
+.hikes-title-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.hikes-item:hover .hikes-thumb {
+    filter: blur(4px);
+}
+
+.hikes-item:hover .hikes-title-overlay {
+    opacity: 1;
+}
+
+.hikes-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+    flex: 0 1 auto;
+    max-width: 1000px;
+    width: 100%;
+    order: 2;
+}
+
+.hikes-main {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.hikes-main iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.hikes-preview {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px) brightness(0.6);
+}
+
+.hikes-preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    backdrop-filter: blur(2px);
+}
+
+.preview-text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    max-width: 80%;
+    line-height: 1.5;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hikes-youtube-btn {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    padding: 0.8rem 2rem;
+    border: 2px solid white;
+    background: transparent;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.hikes-youtube-btn:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
+
+.video-title {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: center;
+    opacity: 0.8;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ===== ЗАГЛУШКА ДЛЯ YOUTUBE (ПК) ===== */
+.vk-fallback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.vk-fallback-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.vk-fallback-icon {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    animation: float 3s infinite ease-in-out;
+}
+
+.vk-fallback-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.vk-fallback-text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+.vk-fallback-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.vk-fallback-button {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    text-align: center;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.vk-fallback-button.primary:hover {
+    background: white;
+    color: black;
+}
+
+.vk-fallback-button.secondary {
+    border-color: #4a76a8;
+}
+
+.vk-fallback-button.secondary:hover {
+    background: #4a76a8;
+    border-color: #4a76a8;
+    color: white;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}

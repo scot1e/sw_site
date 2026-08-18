@@ -1,0 +1,65 @@
+# ========================================
+# .HTACCESS - SCOTT WORK
+# Полная версия с настройками безопасности
+# ========================================
+
+# ----------------------------------------
+# 1. СВОЯ СТРАНИЦА 404
+# ----------------------------------------
+ErrorDocument 404 /404.html
+
+# ----------------------------------------
+# 2. ЗАГОЛОВКИ БЕЗОПАСНОСТИ
+# ----------------------------------------
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "no-referrer-when-downgrade"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://www.youtube.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; img-src 'self' data: https://img.youtube.com;"
+</IfModule>
+
+# ----------------------------------------
+# 3. ЗАПРЕТ ПРОСМОТРА ДИРЕКТОРИЙ
+# ----------------------------------------
+Options -Indexes
+
+# ----------------------------------------
+# 4. ЗАЩИТА СЛУЖЕБНЫХ ФАЙЛОВ
+# ----------------------------------------
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|bak|config|yml|json|lock|example)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ----------------------------------------
+# 5. ЗАЩИТА PYTHON-СКРИПТОВ
+# ----------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteRule ^py/ - [F,L]
+</IfModule>
+
+# ----------------------------------------
+# 6. СЖАТИЕ ФАЙЛОВ
+# ----------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/xml
+    AddOutputFilterByType DEFLATE application/json application/ld+json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ----------------------------------------
+# 7. КЭШИРОВАНИЕ
+# ----------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType video/mp4 "access plus 1 month"
+</IfModule>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCOTT WORK</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="css/loader.css">
+
+    <!-- Prefetch страниц -->
+    <link rel="prefetch" href="releases.html">
+    <link rel="prefetch" href="gallery.html">
+    <link rel="prefetch" href="roadtonowhere.html">
+    <link rel="prefetch" href="hikes.html">
+     
+    <!-- DNS Prefetch для внешних ресурсов -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- ПК-стили -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scale.css">
+    
+    <!-- Мобильные стили -->
+    <link rel="stylesheet" href="mobileadapt/mobile-base.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-index.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-releases.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-gallery.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-road.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-hikes.css">
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="header-link">SCOTT WORK</a>
+            
+            <div class="burger-menu">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <a href="releases.html" class="header-link">РЕЛИЗЫ</a>
+                <a href="roadtonowhere.html" class="header-link">ROADTONOWHERE</a>
+            </nav>
+        </div>
+        
+        <div class="mobile-nav">
+            <a href="releases.html" class="mobile-nav-link">РЕЛИЗЫ</a>
+            <a href="roadtonowhere.html" class="mobile-nav-link">ROADTONOWHERE</a>
+        </div>
+    </header>
+
+    <!-- БЛОК 1: ВИДЕОИНТРО -->
+    <section class="intro-section full-screen">
+        <video class="intro-video" autoplay muted loop playsinline>
+            <source src="videos/intro.mp4" type="video/mp4">
+        </video>
+        <div class="intro-overlay"></div>
+        <div class="intro-content"></div>
+    </section>
+
+    <!-- БЛОК 2: ПОСЛЕДНИЙ ТРЕК -->
+    <section class="full-screen track-section">
+        <div class="track-bg" style="background-image: url('images/releasebg.jpg');"></div>
+        <div class="track-overlay"></div>
+        <div class="track-content">
+            <div class="track-cover">
+                <img src="images/realesecover.jpg" alt="Track cover">
+            </div>
+            <h2 class="track-title">Scott Work – СТРАХ</h2>
+            <p class="track-slogan">Тихие кошмары</p>
+            <a href="https://band.link/22swanhedonia" target="_blank" rel="noopener noreferrer" class="track-button">ПРЕСЕЙВ / СЛУШАТЬ</a>
+        </div>
+    </section>
+
+    <!-- БЛОК 3: ПОСЛЕДНИЙ КЛИП -->
+    <section class="full-screen clip-section">
+        <div class="clip-bg" style="background-image: url('images/clipbg.jpg');"></div>
+        <div class="clip-overlay-left"></div>
+        
+        <h2 class="clip-title">КРАЙНИЙ КЛИП</h2>
+        
+        <div class="clip-video">
+            <iframe src="https://www.youtube-nocookie.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        
+        <p class="clip-slogan">Мне больше не больно<br>Кажется, это навсегда</p>
+        
+        <a href="https://band.link/22swanhedonia" target="_blank" rel="noopener noreferrer" class="clip-button">СЛУШАТЬ ТРЕК</a>
+    </section>
+
+    <!-- БЛОК СОЦСЕТЕЙ -->
+    <section class="social-section full-screen">
+        <div class="social-bg" style="background-image: url('images/social-bg.jpg');"></div>
+        <div class="social-overlay"></div>
+        <div class="social-columns">
+            <a href="https://vk.com/artist/scottwork_mtyyotywnzq5nq" target="_blank" class="social-column">BOOM</a>
+            <a href="https://t.me/s_me_w" target="_blank" class="social-column">TELEGRAM</a>
+            <a href="https://www.youtube.com/@scottworkmusic" target="_blank" class="social-column">YOUTUBE</a>
+            <a href="https://music.youtube.com/channel/UCKKP2YUsW7G7olqy3jaKr7w?si=65w_OcDTUcaz1Yw7" target="_blank" class="social-column">YOUTUBE MUSIC</a>
+            <a href="https://www.instagram.com/_scottwork_/" target="_blank" class="social-column">INSTAGRAM</a>
+            <a href="https://open.spotify.com/artist/5MH48ePqGgcnq8yhpdYK8T?" target="_blank" class="social-column">SPOTIFY</a>
+            <a href="https://music.yandex.ru/artist/2306772?utm_source=web&utm_medium=copy_link" target="_blank" class="social-column">YANDEX MUSIC</a>
+            <a href="https://vk.com/scottworkofficial" target="_blank" class="social-column">VKONTAKTE</a>
+            <a href="https://www.tiktok.com/@scottworkoff" target="_blank" class="social-column">TIK TOK</a>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-copyright">© 2026 SCOTT WORK</div>
+        </div>
+    </footer>
+
+    <!-- СКРИПТЫ -->
+    <script src="js/browser-detector.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/snap.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/zippo.local.js"></script>
+    <script src="js/image-optimizer.js"></script>
+
+    <!-- Экран загрузки с глитчем -->
+    <div class="loader-overlay" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-text" id="loaderText" data-text="ЗАГРУЗКА">ЗАГРУЗКА</div>
+            <div class="loader-subtext" id="loaderSubtext">SCOTT WORK</div>
+        </div>
+    </div>
+
+    <!-- Скрипт для загрузчика -->
+    <script src="js/page-loader.js"></script>
+</body>
+</html>

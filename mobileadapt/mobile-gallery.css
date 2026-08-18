@@ -1,0 +1,252 @@
+/* ===== МОБИЛЬНЫЕ СТИЛИ ДЛЯ ГАЛЕРЕИ ===== */
+
+/* --- Диапазон 1: Маленькие телефоны (до 480px) --- */
+@media screen and (max-width: 480px) {
+    
+    .gallery-content {
+        flex-direction: column !important;
+        width: 95% !important;
+        padding: 0 0.5rem !important;
+        gap: 1rem !important;
+    }
+    
+    .left-column {
+        width: 100% !important;
+    }
+    
+    .right-column {
+        width: 100% !important;
+    }
+    
+    .city-title-trigger {
+        font-size: 1.1rem !important;
+    }
+    
+    /* ВЫПАДАЮЩИЙ СПИСОК ГОРОДОВ */
+    .cities-dropdown {
+        max-height: 125px !important;
+        overflow-y: auto !important;
+        background: rgba(0, 0, 0, 0.95) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 8px !important;
+        padding: 0.5rem 0 !important;
+        margin-top: 5px !important;
+        -webkit-overflow-scrolling: touch !important;
+        position: absolute !important;
+        width: 100% !important;
+        z-index: 101 !important;
+    }
+    
+    .cities-dropdown::-webkit-scrollbar {
+        width: 4px !important;
+    }
+    
+    .cities-dropdown::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    .cities-dropdown::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-radius: 4px !important;
+    }
+    
+    .city-dropdown-item {
+        padding: 10px 12px !important;
+        font-size: 0.85rem !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        color: white !important;
+        cursor: pointer !important;
+    }
+    
+    .city-dropdown-item:last-child {
+        border-bottom: none !important;
+    }
+    
+    .city-dropdown-item:active {
+        background: rgba(255, 255, 255, 0.2) !important;
+        padding-left: 15px !important;
+    }
+    
+    .city-dropdown-item.active {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-left: 3px solid white !important;
+    }
+    
+    /* СПИСОК ОБЪЕКТОВ */
+    .objects-list {
+        max-height: 155px !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        backdrop-filter: blur(4px) !important;
+        -webkit-backdrop-filter: blur(4px) !important;
+        border-radius: 8px !important;
+        padding: 0.5rem !important;
+    }
+    
+    .objects-list::-webkit-scrollbar {
+        width: 4px !important;
+    }
+    
+    .objects-list::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    .objects-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-radius: 4px !important;
+    }
+    
+    .object-item {
+        font-size: 0.75rem !important;
+        padding: 6px 8px !important;
+        border-radius: 4px !important;
+    }
+    
+    .object-item:active {
+        background: rgba(255, 255, 255, 0.2) !important;
+        transform: translateX(5px) !important;
+    }
+    
+    .object-item.active {
+        background: rgba(255, 255, 255, 0.2) !important;
+        transform: translateX(5px) !important;
+    }
+    
+    /* ===== МОБИЛЬНЫЕ СОЦИАЛЬНЫЕ КНОПКИ ===== */
+    /* Полностью скрываем ПК-версию кнопок */
+    .gallery-social-btn {
+        display: none !important;
+    }
+    
+    /* Новые мобильные кнопки */
+    .mobile-social-buttons {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        margin-top: 1rem !important;
+        width: 100% !important;
+    }
+    
+    .mobile-btn-telegram,
+    .mobile-btn-vk {
+        display: inline-block !important;
+        color: white !important;
+        text-decoration: none !important;
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        font-family: 'Raleway', sans-serif !important;
+        padding: 0.7rem 1.5rem !important;
+        border: 2px solid white !important;
+        background: transparent !important;
+        transition: background-color 0.2s ease !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        min-width: 120px !important;
+        text-align: center !important;
+        border-radius: 4px !important;
+        flex: 0 1 auto !important;
+    }
+    
+    .mobile-btn-telegram:active,
+    .mobile-btn-vk:active {
+        background: white !important;
+        color: black !important;
+    }
+    
+    /* Отступ от шапки */
+    .gallery-hero {
+        padding-top: 70px !important;
+        box-sizing: border-box !important;
+        height: 100vh !important;
+    }
+    
+    .gallery-content {
+        height: calc(100% - 70px) !important;
+        overflow-y: auto !important;
+    }
+}
+
+/* --- Диапазон 2: Средние телефоны (481px - 600px) --- */
+@media screen and (min-width: 481px) and (max-width: 600px) {
+    
+    .gallery-hero {
+        padding-top: 75px !important;
+    }
+    
+    .gallery-content {
+        height: calc(100% - 75px) !important;
+    }
+    
+    .city-title-trigger {
+        font-size: 1.2rem !important;
+    }
+    
+    .cities-dropdown {
+        max-height: 155px !important;
+    }
+    
+    .objects-list {
+        max-height: 185px !important;
+    }
+    
+    .city-dropdown-item {
+        font-size: 0.9rem !important;
+        padding: 12px 15px !important;
+    }
+    
+    .object-item {
+        font-size: 0.8rem !important;
+    }
+    
+    .mobile-btn-telegram,
+    .mobile-btn-vk {
+        font-size: 0.9rem !important;
+        padding: 0.8rem 1.8rem !important;
+        min-width: 140px !important;
+    }
+}
+
+/* --- Диапазон 3: Большие телефоны (601px - 768px) --- */
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    
+    .gallery-hero {
+        padding-top: 80px !important;
+    }
+    
+    .gallery-content {
+        height: calc(100% - 80px) !important;
+    }
+    
+    .city-title-trigger {
+        font-size: 1.3rem !important;
+    }
+    
+    .cities-dropdown {
+        max-height: 185px !important;
+    }
+    
+    .objects-list {
+        max-height: 215px !important;
+    }
+    
+    .city-dropdown-item {
+        font-size: 1rem !important;
+        padding: 14px 18px !important;
+    }
+    
+    .object-item {
+        font-size: 0.85rem !important;
+    }
+    
+    .mobile-btn-telegram,
+    .mobile-btn-vk {
+        font-size: 1rem !important;
+        padding: 0.9rem 2rem !important;
+        min-width: 160px !important;
+    }
+}

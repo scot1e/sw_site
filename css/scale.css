@@ -1,0 +1,337 @@
+/* ===== ЕДИНОЕ МАСШТАБИРОВАНИЕ И АДАПТАЦИЯ ===== */
+/* ===== ПОДКЛЮЧАТЬ ПОСЛЕ ВСЕХ ОСНОВНЫХ CSS ===== */
+
+:root {
+    --scale-factor: 1;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ===== ПРАВКИ ДЛЯ РАЗНЫХ БРАУЗЕРОВ ===== */
+.browser-chrome .road-block { max-width: 100vw; overflow-x: hidden; }
+.browser-chrome .road-layer { max-width: 100vw; }
+.browser-chrome .full-screen { height: 100vh; height: 100dvh; }
+.browser-firefox .full-screen { height: 100vh; }
+.browser-safari .full-screen { height: 100vh; }
+
+/* ===== ПРАВКИ ДЛЯ ВСЕХ БРАУЗЕРОВ КРОМЕ ZEN ===== */
+body:not(.is-zen-browser) .single-card { width: 500px; }
+body:not(.is-zen-browser) .single-cover { box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); }
+body:not(.is-zen-browser) .single-info .title-artist { font-size: 0.95rem; }
+body:not(.is-zen-browser) .single-info .year { font-size: 0.85rem; }
+body:not(.is-zen-browser) .single-hover-info .hover-title-artist { font-size: 1.1rem; margin-bottom: 1.5rem; }
+body:not(.is-zen-browser) .single-hover-info .single-listen-btn { font-size: 1.1rem; padding: 0.7rem 2rem; }
+body:not(.is-zen-browser) .hikes-sidebar { width: 220px; }
+body:not(.is-zen-browser) .hikes-item { margin-bottom: 0.8rem; }
+body:not(.is-zen-browser) .hikes-title-overlay { font-size: 0.85rem; padding: 0.4rem; }
+body:not(.is-zen-browser) .video-title { font-size: 1.1rem; }
+body:not(.is-zen-browser) .preview-text { font-size: 1.2rem; margin-bottom: 1.2rem; }
+body:not(.is-zen-browser) .hikes-youtube-btn { font-size: 0.95rem; padding: 0.7rem 1.8rem; }
+
+/* ===== ПРАВКИ ДЛЯ ZEN БРАУЗЕРА ===== */
+body.is-zen-browser .single-card { width: 520px; }
+body.is-zen-browser .single-cover { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); }
+body.is-zen-browser .single-info .title-artist { font-size: 1rem; }
+body.is-zen-browser .single-info .year { font-size: 0.9rem; }
+body.is-zen-browser .single-hover-info .hover-title-artist { font-size: 1.2rem; margin-bottom: 1.8rem; }
+body.is-zen-browser .single-hover-info .single-listen-btn { font-size: 1.2rem; padding: 0.8rem 2.2rem; }
+body.is-zen-browser .hikes-sidebar { width: 240px; }
+body.is-zen-browser .hikes-item { margin-bottom: 1rem; }
+body.is-zen-browser .hikes-title-overlay { font-size: 0.9rem; padding: 0.5rem; }
+body.is-zen-browser .video-title { font-size: 1.2rem; }
+body.is-zen-browser .preview-text { font-size: 1.3rem; margin-bottom: 1.5rem; }
+body.is-zen-browser .hikes-youtube-btn { font-size: 1rem; padding: 0.8rem 2rem; }
+
+/* ===== МАСШТАБИРОВАНИЕ ПОД РАЗНЫЕ РАЗРЕШЕНИЯ ===== */
+
+/* Очень большие экраны */
+@media screen and (min-width: 2560px) { 
+    :root { --scale-factor: 1.3; }
+    
+    .clip-title { 
+        font-size: 2.8rem; 
+        left: 10%; 
+        top: 25%;
+    }
+    .clip-slogan { 
+        font-size: 1.6rem; 
+        left: 10%; 
+        bottom: 50%;
+        max-width: 40%; 
+    }
+    .clip-button { 
+        font-size: 1.4rem; 
+        padding: 1rem 3rem; 
+        left: 10%; 
+        bottom: 25%;
+    }
+    .clip-video { 
+        width: 45%; 
+        right: 10%; 
+    }
+}
+
+/* Стандартные Full HD */
+@media screen and (max-width: 1920px) { 
+    :root { --scale-factor: 1; }
+}
+
+/* 1680px */
+@media screen and (max-width: 1680px) {
+    :root { --scale-factor: 0.95; }
+    
+    .clip-title { 
+        font-size: 2rem; 
+        left: 8%; 
+    }
+    .clip-slogan { 
+        font-size: 1.1rem; 
+        left: 8%; 
+        max-width: 35%; 
+    }
+    .clip-button { 
+        font-size: 1rem; 
+        padding: 0.7rem 2.2rem; 
+        left: 8%; 
+    }
+    .clip-video { 
+        width: 48%; 
+        right: 8%; 
+    }
+    
+    body:not(.is-zen-browser) .single-card { width: 450px; }
+    body:not(.is-zen-browser) .hikes-sidebar { width: 200px; }
+    body.is-zen-browser .single-card { width: 470px; }
+    body.is-zen-browser .hikes-sidebar { width: 220px; }
+}
+
+/* 1600px */
+@media screen and (max-width: 1600px) { 
+    :root { --scale-factor: 0.9; }
+    
+    .clip-title { font-size: 1.9rem; }
+    .clip-slogan { font-size: 1rem; }
+    .clip-button { font-size: 0.95rem; padding: 0.65rem 2rem; }
+}
+
+/* 1440px */
+@media screen and (max-width: 1440px) {
+    :root { --scale-factor: 0.85; }
+    
+    .clip-title { 
+        font-size: 1.8rem; 
+        top: 22%;
+    }
+    .clip-slogan { 
+        font-size: 0.95rem; 
+        bottom: 48%; 
+        max-width: 30%; 
+    }
+    .clip-button { 
+        font-size: 0.9rem; 
+        padding: 0.6rem 1.8rem; 
+        bottom: 22%; 
+    }
+    .clip-video { 
+        width: 45%; 
+    }
+    
+    .road-title { font-size: 2.2rem; }
+    .road-hover-text { font-size: 1.1rem; }
+    .road-button { font-size: 1rem; padding: 0.7rem 1.8rem; }
+    
+    body:not(.is-zen-browser) .single-card { width: 400px; }
+    body:not(.is-zen-browser) .single-hover-info .hover-title-artist { font-size: 1rem; }
+    body:not(.is-zen-browser) .hikes-sidebar { width: 180px; }
+    body.is-zen-browser .single-card { width: 420px; }
+    body.is-zen-browser .hikes-sidebar { width: 200px; }
+}
+
+/* 1366px */
+@media screen and (max-width: 1366px) {
+    :root { --scale-factor: 0.8; }
+    
+    .clip-title { 
+        font-size: 1.7rem; 
+        top: 20%;
+    }
+    .clip-slogan { 
+        font-size: 0.9rem; 
+        bottom: 46%;
+    }
+    .clip-button { 
+        font-size: 0.85rem; 
+        padding: 0.5rem 1.6rem; 
+        bottom: 20%;
+    }
+    
+    body:not(.is-zen-browser) .single-card { width: 380px; }
+    body:not(.is-zen-browser) .hikes-sidebar { width: 160px; }
+    body.is-zen-browser .single-card { width: 400px; }
+    body.is-zen-browser .hikes-sidebar { width: 180px; }
+}
+
+/* 1280px */
+@media screen and (max-width: 1280px) { 
+    :root { --scale-factor: 0.75; }
+    
+    .clip-title { 
+        font-size: 1.6rem; 
+        top: 18%;
+    }
+    .clip-slogan { 
+        font-size: 0.85rem; 
+        bottom: 44%;
+    }
+    .clip-button { 
+        font-size: 0.8rem; 
+        padding: 0.5rem 1.5rem; 
+        bottom: 18%;
+    }
+}
+
+/* 1200px */
+@media screen and (max-width: 1200px) { 
+    :root { --scale-factor: 0.7; }
+    
+    .clip-title { 
+        font-size: 1.5rem; 
+        top: 16%;
+    }
+    .clip-slogan { 
+        font-size: 0.8rem; 
+        bottom: 42%;
+        max-width: 32%;
+    }
+    .clip-button { 
+        font-size: 0.75rem; 
+        padding: 0.45rem 1.4rem; 
+        bottom: 16%;
+    }
+}
+
+/* 1024px */
+@media screen and (max-width: 1024px) { 
+    :root { --scale-factor: 0.7; }
+    
+    .clip-title { 
+        font-size: 1.5rem; 
+        top: 15%; 
+    }
+    .clip-slogan { 
+        font-size: 0.8rem; 
+        bottom: 40%; 
+        max-width: 35%;
+    }
+    .clip-button { 
+        font-size: 0.75rem; 
+        bottom: 15%; 
+    }
+}
+
+/* 900px - переход к мобильной версии */
+@media screen and (max-width: 900px) {
+    :root { --scale-factor: 0.65; }
+    
+    .clip-title { 
+        font-size: 1.4rem; 
+        left: 5%; 
+        top: 12%; 
+    }
+    .clip-slogan { 
+        font-size: 0.75rem; 
+        left: 5%; 
+        bottom: 38%; 
+        max-width: 40%; 
+    }
+    .clip-button { 
+        font-size: 0.7rem; 
+        padding: 0.4rem 1.2rem; 
+        left: 5%; 
+        bottom: 12%; 
+    }
+    .clip-video { 
+        width: 50%; 
+        right: 5%; 
+    }
+    
+    .gallery-content { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 1.5rem; 
+    }
+    .left-column { 
+        width: 100%; 
+        max-width: 500px; 
+    }
+    .right-column { 
+        width: 100%; 
+        max-width: 600px; 
+    }
+    .objects-list { 
+        max-height: 300px; 
+    }
+    .city-title-trigger { 
+        font-size: 1.8rem; 
+    }
+    .carousel-arrow { 
+        width: 30px; 
+        height: 30px; 
+        border-width: 0 1.5px 1.5px 0; 
+    }
+}
+
+/* ===== ОПТИМИЗАЦИЯ ЗАГРУЗЧИКА ДЛЯ РАЗНЫХ БРАУЗЕРОВ ===== */
+
+/* Для Firefox */
+.browser-firefox .loader-text {
+    animation: loaderGlitch 3s infinite;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.browser-firefox .loader-text::before,
+.browser-firefox .loader-text::after {
+    opacity: 0.5;
+}
+
+/* Для Safari */
+.browser-safari .loader-text {
+    animation: loaderGlitch 3.5s infinite;
+    -webkit-font-smoothing: antialiased;
+}
+
+.browser-safari .loader-text::before {
+    animation: loaderGlitchTop 2s infinite linear alternate-reverse;
+    -webkit-animation: loaderGlitchTop 2s infinite linear alternate-reverse;
+}
+
+.browser-safari .loader-text::after {
+    animation: loaderGlitchBottom 1.8s infinite linear alternate-reverse;
+    -webkit-animation: loaderGlitchBottom 1.8s infinite linear alternate-reverse;
+}
+
+/* Для Edge (Chromium) */
+.browser-edge .loader-text {
+    animation: loaderGlitch 3s infinite;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+}
+
+/* Для Opera */
+.browser-opera .loader-text {
+    animation: loaderGlitch 3s infinite;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+/* Если что-то пошло совсем плохо - отключаем анимации */
+.browser-ie .loader-text::before,
+.browser-ie .loader-text::after {
+    display: none;
+}
+
+.browser-ie .loader-text {
+    animation: none;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}

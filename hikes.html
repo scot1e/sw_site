@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПОХОДЫ</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="css/loader.css">
+
+    <!-- Prefetch страниц -->
+    <link rel="prefetch" href="releases.html">
+    <link rel="prefetch" href="gallery.html">
+    <link rel="prefetch" href="roadtonowhere.html">
+    <link rel="prefetch" href="hikes.html">
+     
+    <!-- DNS Prefetch для внешних ресурсов -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- ПК-стили -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scale.css">
+    <link rel="stylesheet" href="css/hikes.css">
+    
+    <!-- Мобильные стили -->
+    <link rel="stylesheet" href="mobileadapt/mobile-base.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-hikes.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-releases.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-gallery.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-road.css">
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="header-link">SCOTT WORK</a>
+            
+            <div class="burger-menu">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <a href="releases.html" class="header-link">РЕЛИЗЫ</a>
+                <a href="roadtonowhere.html" class="header-link">ROADTONOWHERE</a>
+            </nav>
+        </div>
+        
+        <div class="mobile-nav">
+            <a href="releases.html" class="mobile-nav-link">РЕЛИЗЫ</a>
+            <a href="roadtonowhere.html" class="mobile-nav-link">ROADTONOWHERE</a>
+        </div>
+    </header>
+
+    <div class="hikes-container">
+        <div class="hikes-bg" id="hikesBg"></div>
+        
+        <div class="hikes-center">
+            <div class="video-title" id="videoTitle">Загрузка...</div>
+            <div class="hikes-main" id="hikesMain"></div>
+        </div>
+        
+        <div class="hikes-sidebar">
+            <div class="hikes-list" id="hikesList"></div>
+        </div>
+    </div>
+
+    <!-- ПОДВАЛ -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-copyright">© 2026 SCOTT WORK</div>
+        </div>
+    </footer>
+
+    <!-- СКРИПТЫ -->
+    <script src="js/browser-detector.js"></script>
+    <script src="js/hikes.js"></script>
+    <script src="js/snap.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script>
+    if (window.innerWidth <= 768) {
+        document.write('<script src="js/hikes-mobile.js"><\/script>');
+    } else {
+        document.write('<script src="js/hikes-pc.js"><\/script>');
+    }
+    </script>
+    <script src="js/zippo.local.js"></script>
+    <script src="js/image-optimizer.js"></script>
+    <script src="js/hikes-timeout.js"></script>
+
+    <!-- Экран загрузки с глитчем -->
+    <div class="loader-overlay" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-text" id="loaderText" data-text="ЗАГРУЗКА">ЗАГРУЗКА</div>
+            <div class="loader-subtext" id="loaderSubtext">SCOTT WORK</div>
+        </div>
+    </div>
+
+    <!-- Скрипт для загрузчика -->
+    <script src="js/page-loader.js"></script>
+</body>
+</html>

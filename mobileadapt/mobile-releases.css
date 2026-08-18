@@ -1,0 +1,353 @@
+/* ===== МОБИЛЬНЫЕ СТИЛИ ДЛЯ РЕЛИЗОВ ===== */
+/* Альбомы и синглы */
+
+/* --- Диапазон 1: Маленькие телефоны (до 480px) --- */
+@media screen and (max-width: 480px) {
+    
+    /* ===== АЛЬБОМЫ ===== */
+    .albums-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100vh !important;
+        width: 100% !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+    
+    .album-column {
+        flex: 1 1 0 !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: none !important;
+        cursor: pointer !important;
+        display: block !important;
+    }
+    
+    .album-column:last-child {
+        border-bottom: none !important;
+    }
+    
+    .album-column:hover {
+        flex: 1 1 0 !important;
+    }
+    
+    .album-cover {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-size: cover !important;
+        background-position: center !important;
+        filter: blur(6px) brightness(0.7) !important;
+        transition: none !important;
+        z-index: 1 !important;
+    }
+    
+    .album-column:hover .album-cover {
+        filter: blur(6px) brightness(0.7) !important;
+    }
+    
+    .album-overlay {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        z-index: 2 !important;
+        opacity: 0.3 !important;
+    }
+    
+    .album-title-vertical {
+        writing-mode: horizontal-tb !important;
+        text-orientation: mixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        font-size: 1.5rem !important;
+        z-index: 3 !important;
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7) !important;
+        font-weight: 900 !important;
+        letter-spacing: 2px !important;
+        position: absolute !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition: none !important;
+    }
+    
+    .album-column:hover .album-title-vertical {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .album-link {
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 10 !important;
+        text-indent: -9999px !important;
+    }
+    
+    .album-content,
+    .album-content-left,
+    .album-content-right,
+    .album-small-cover,
+    .album-artist-name,
+    .album-description,
+    .album-small-button {
+        display: none !important;
+    }
+    
+    /* ===== СИНГЛЫ - НА ВЕСЬ ЭКРАН ===== */
+    .singles-section {
+        height: 100vh !important;  /* На весь экран */
+        width: 100% !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .singles-bg {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-size: cover !important;
+        background-position: center !important;
+        filter: blur(8px) brightness(0.4) !important;
+        z-index: 1 !important;
+    }
+    
+    .singles-overlay {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        z-index: 2 !important;
+        pointer-events: none !important;
+    }
+    
+    .singles-container {
+        position: relative !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        z-index: 5 !important;
+        padding: 0 1rem !important;
+        box-sizing: border-box !important;
+    }
+    
+    .singles-carousel-wrapper {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        padding: 0 25px !important;
+        box-sizing: border-box !important;
+    }
+    
+    .singles-carousel {
+        flex: 1 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-behavior: smooth !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        cursor: default !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 1rem 0 !important;
+    }
+    
+    .singles-carousel::-webkit-scrollbar {
+        display: none !important;
+    }
+    
+    .singles-track {
+        display: flex !important;
+        gap: 1rem !important;
+        width: max-content !important;
+        padding: 0 0.25rem !important;
+    }
+    
+    .single-card-link {
+        text-decoration: none !important;
+        display: block !important;
+        width: fit-content !important;
+    }
+    
+    .single-card {
+        width: 200px !important;
+        flex-shrink: 0 !important;
+        position: relative !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        background: transparent !important;
+        transition: none !important;
+        transform: none !important;
+    }
+    
+    .single-cover {
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important;
+        background-size: cover !important;
+        background-position: center !important;
+        border-radius: 12px !important;
+        transition: none !important;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    .single-info {
+        padding: 1rem 0 !important;
+        background: transparent !important;
+        color: white !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-family: 'Raleway', sans-serif !important;
+        width: 100% !important;
+        text-align: center !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+    
+    .single-info .title-artist {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 0.3rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 90% !important;
+    }
+    
+    .single-info .year {
+        font-size: 0.6rem !important;
+        font-weight: 400 !important;
+        color: rgba(255, 255, 255, 0.5) !important;
+        white-space: nowrap !important;
+        max-width: 90% !important;
+    }
+    
+    .single-hover-info {
+        display: none !important;
+    }
+    
+    .carousel-arrow {
+        width: 30px !important;
+        height: 30px !important;
+        border: solid white !important;
+        border-width: 0 2px 2px 0 !important;
+        display: inline-block !important;
+        padding: 3px !important;
+        opacity: 0.7 !important;
+        transition: opacity 0.3s ease !important;
+        background: transparent !important;
+        z-index: 10 !important;
+        flex-shrink: 0 !important;
+        cursor: pointer !important;
+    }
+    
+    .carousel-arrow:hover {
+        opacity: 1 !important;
+    }
+    
+    .carousel-arrow.left {
+        transform: rotate(135deg) !important;
+    }
+    
+    .carousel-arrow.right {
+        transform: rotate(-45deg) !important;
+    }
+}
+
+/* --- Диапазон 2: Средние телефоны (481px - 600px) --- */
+@media screen and (min-width: 481px) and (max-width: 600px) {
+    
+    .albums-grid {
+        height: 100vh !important;
+    }
+    
+    .album-title-vertical {
+        font-size: 1.8rem !important;
+    }
+    
+    .singles-section {
+        height: 100vh !important;
+    }
+    
+    .singles-track {
+        gap: 1.2rem !important;
+    }
+    
+    .single-card {
+        width: 220px !important;
+    }
+    
+    .single-info .title-artist {
+        font-size: 0.75rem !important;
+    }
+    
+    .single-info .year {
+        font-size: 0.65rem !important;
+    }
+    
+    .carousel-arrow {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+
+/* --- Диапазон 3: Большие телефоны (601px - 768px) --- */
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    
+    .albums-grid {
+        height: 100vh !important;
+    }
+    
+    .album-title-vertical {
+        font-size: 2.2rem !important;
+    }
+    
+    .singles-section {
+        height: 100vh !important;
+    }
+    
+    .singles-track {
+        gap: 1.5rem !important;
+    }
+    
+    .single-card {
+        width: 240px !important;
+    }
+    
+    .single-info .title-artist {
+        font-size: 0.8rem !important;
+    }
+    
+    .single-info .year {
+        font-size: 0.7rem !important;
+    }
+    
+    .carousel-arrow {
+        width: 35px !important;
+        height: 35px !important;
+    }
+}

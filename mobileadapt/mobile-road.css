@@ -1,0 +1,239 @@
+/* ===== МОБИЛЬНЫЕ СТИЛИ ДЛЯ ROAD TO NOWHERE ===== */
+
+/* --- Диапазон 1: Маленькие телефоны (до 480px) --- */
+@media screen and (max-width: 480px) {
+    
+    .road-block {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .road-layer {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: 33.333vh;
+        transform: none !important;
+        transition: none !important;
+        flex: 1 1 0;
+        min-height: 0;
+    }
+    
+    .road-layer:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        filter: none !important;
+    }
+    
+    .road-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: blur(4px) brightness(0.6);
+    }
+    
+    .road-layer:hover .road-photo {
+        filter: blur(4px) brightness(0.6) !important;
+    }
+    
+    .road-content {
+        position: absolute;
+        top: 0;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        pointer-events: auto;
+        z-index: 2;
+    }
+    
+    .road-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        transform: none !important;
+        transition: none !important;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    }
+    
+    .road-hover-text {
+        font-size: 0.9rem;
+        opacity: 1 !important;
+        max-height: none !important;
+        transform: none !important;
+        margin: 0.5rem 0;
+        display: block;
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+    
+    .road-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.5rem;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        display: inline-block;
+        transform: none !important;
+        transition: background-color 0.3s ease;
+        white-space: nowrap;
+        margin-top: 0.5rem;
+        min-width: 160px;
+        letter-spacing: 1px;
+    }
+    
+    .road-button:active {
+        background: white;
+        color: black;
+    }
+    
+    .left-layer .road-content,
+    .center-layer .road-content,
+    .right-layer .road-content {
+        left: 0;
+        right: 0;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .road-block.left-trigger .left-layer,
+    .road-block.right-trigger .right-layer,
+    .road-block.center-trigger .center-layer {
+        transform: none !important;
+    }
+    
+    .road-block.left-trigger .left-layer .road-title,
+    .road-block.right-trigger .right-layer .road-title,
+    .road-block.center-trigger .center-layer .road-title {
+        transform: none !important;
+    }
+    
+    .road-block.left-trigger .left-layer .road-hover-text,
+    .road-block.right-trigger .right-layer .road-hover-text,
+    .road-block.center-trigger .center-layer .road-hover-text {
+        opacity: 1 !important;
+        max-height: none !important;
+        transform: none !important;
+    }
+    
+    .road-block.left-trigger .left-layer .road-button,
+    .road-block.right-trigger .right-layer .road-button,
+    .road-block.center-trigger .center-layer .road-button {
+        transform: none !important;
+    }
+    
+    .center-layer .road-title {
+        font-size: 1.7rem;
+    }
+    
+    .center-layer .road-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.8rem;
+    }
+    
+    .scroll-arrow {
+        bottom: 15px;
+        width: 30px;
+        height: 30px;
+        opacity: 0.8;
+        z-index: 20;
+    }
+    
+    .arrow-down {
+        width: 20px;
+        height: 20px;
+        border-width: 2px;
+    }
+}
+
+/* --- Диапазон 2: Средние телефоны (481px - 600px) --- */
+@media screen and (min-width: 481px) and (max-width: 600px) {
+    
+    .road-title {
+        font-size: 1.7rem;
+    }
+    
+    .road-hover-text {
+        font-size: 1rem;
+    }
+    
+    .road-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.8rem;
+        min-width: 180px;
+    }
+    
+    .center-layer .road-title {
+        font-size: 1.9rem;
+    }
+    
+    .center-layer .road-button {
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
+    }
+    
+    .scroll-arrow {
+        bottom: 20px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .arrow-down {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* --- Диапазон 3: Большие телефоны (601px - 768px) --- */
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    
+    .road-title {
+        font-size: 2rem;
+    }
+    
+    .road-hover-text {
+        font-size: 1.1rem;
+    }
+    
+    .road-button {
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
+        min-width: 200px;
+    }
+    
+    .center-layer .road-title {
+        font-size: 2.2rem;
+    }
+    
+    .center-layer .road-button {
+        font-size: 1.2rem;
+        padding: 0.9rem 2.2rem;
+    }
+    
+    .scroll-arrow {
+        bottom: 25px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .arrow-down {
+        width: 25px;
+        height: 25px;
+    }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ГАЛЕРЕЯ</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="css/loader.css">
+
+    <!-- Prefetch страниц -->
+    <link rel="prefetch" href="releases.html">
+    <link rel="prefetch" href="gallery.html">
+    <link rel="prefetch" href="roadtonowhere.html">
+    <link rel="prefetch" href="hikes.html">
+     
+    <!-- DNS Prefetch для внешних ресурсов -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- ПК-стили -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scale.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    
+    <!-- Мобильные стили -->
+    <link rel="stylesheet" href="mobileadapt/mobile-base.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-gallery.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-releases.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-road.css">
+    <link rel="stylesheet" href="mobileadapt/mobile-hikes.css">
+</head>
+<body class="gallery-page">
+    <!-- ШАПКА -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="header-link">SCOTT WORK</a>
+            
+            <div class="burger-menu">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <a href="releases.html" class="header-link">РЕЛИЗЫ</a>
+                <a href="roadtonowhere.html" class="header-link">ROADTONOWHERE</a>
+            </nav>
+        </div>
+        
+        <div class="mobile-nav">
+            <a href="releases.html" class="mobile-nav-link">РЕЛИЗЫ</a>
+            <a href="roadtonowhere.html" class="mobile-nav-link">ROADTONOWHERE</a>
+        </div>
+    </header>
+
+    <section class="gallery-hero">
+        <div class="gallery-bg" id="cityBg"></div>
+        <div class="gallery-overlay"></div>
+
+        <div class="gallery-content">
+            <!-- ЛЕВАЯ КОЛОНКА -->
+            <div class="left-column">
+                <!-- Селектор города -->
+                <div class="city-selector">
+                    <div class="city-title-trigger" id="cityTitleTrigger">ЗАГРУЗКА...</div>
+                    <div class="cities-dropdown" id="citiesDropdown"></div>
+                </div>
+                
+                <!-- Список объектов -->
+                <div class="objects-list" id="objectsList">
+                    <div class="objects-items"></div>
+                </div>
+            </div>
+            
+            <!-- ПРАВАЯ КОЛОНКА -->
+            <div class="right-column">
+                <!-- Карусель фото -->
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack"></div>
+                    <div class="carousel-arrow left" id="prevPhoto"></div>
+                    <div class="carousel-arrow right" id="nextPhoto"></div>
+                </div>
+                
+                <!-- Координаты -->
+                <div class="object-coords">
+                    <a href="#" target="_blank" class="coords-link" id="coordsLink">Загрузка...</a>
+                </div>
+                
+                <!-- ПК-версия социальных кнопок -->
+                <div class="gallery-social-btn">
+                    <div class="social-btn-main">ВСЕ ФОТО ТУТ</div>
+                    <div class="social-btn-dropdown">
+                        <a href="https://t.me/s_me_w" target="_blank" class="social-btn-telegram">TELEGRAM</a>
+                        <a href="https://vk.com/scottworkofficial" target="_blank" class="social-btn-vk">VKONTAKTE</a>
+                    </div>
+                </div>
+                
+                <!-- Мобильные социальные кнопки -->
+                <div class="mobile-social-buttons">
+                    <a href="https://t.me/s_me_w" target="_blank" class="mobile-btn-telegram">TELEGRAM</a>
+                    <a href="https://vk.com/scottworkofficial" target="_blank" class="mobile-btn-vk">VKONTAKTE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-copyright">© 2026 SCOTT WORK</div>
+        </div>
+    </footer>
+
+    <!-- СКРИПТЫ -->
+    <script src="js/browser-detector.js"></script>
+    <script src="js/gallery-data.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/snap.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/zippo.local.js"></script>
+    <script src="js/image-optimizer.js"></script>
+
+    <!-- Экран загрузки с глитчем -->
+    <div class="loader-overlay" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-text" id="loaderText" data-text="ЗАГРУЗКА">ЗАГРУЗКА</div>
+            <div class="loader-subtext" id="loaderSubtext">SCOTT WORK</div>
+        </div>
+    </div>
+
+    <!-- Скрипт для загрузчика -->
+    <script src="js/page-loader.js"></script>
+</body>
+</html>

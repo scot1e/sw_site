@@ -1,0 +1,425 @@
+/* ===== ГАЛЕРЕЯ ===== */
+.gallery-page {
+    overflow-x: hidden;
+    background-color: #000;
+}
+
+.gallery-hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.gallery-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(0.5);
+    transform: scale(1.1);
+    transition: background-image 0.5s ease;
+    z-index: 0;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== КОНТЕНТ ГОРОДА ===== */
+.gallery-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 0 2rem;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* ===== ЛЕВАЯ КОЛОНКА ===== */
+.left-column {
+    width: 400px;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===== НАЗВАНИЕ ГОРОДА (ПОДЧЁРКНУТО) ===== */
+.city-title-trigger {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    cursor: pointer;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    display: inline-block;
+    width: auto;
+}
+
+.city-title-trigger:hover {
+    border-bottom-color: white;
+    transform: scale(1.05);
+    transform-origin: left;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== ВЫПАДАЮЩИЙ СПИСОК ГОРОДОВ ===== */
+.city-selector {
+    position: relative;
+    width: 100%;
+}
+
+.cities-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    margin-top: 5px;
+}
+
+.cities-dropdown.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Затемнение и размытие списка объектов при открытом дропдауне */
+.cities-dropdown.visible ~ .objects-list {
+    filter: blur(2px) brightness(0.7);
+    transition: filter 0.3s ease;
+}
+
+.city-dropdown-item {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.city-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.city-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 2rem;
+}
+
+.city-dropdown-item.active {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+    border-left: 3px solid white;
+}
+
+/* ===== СПИСОК ОБЪЕКТОВ ===== */
+.objects-list {
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    transition: filter 0.3s ease;
+}
+
+.objects-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.objects-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.objects-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.objects-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.object-item {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    background: transparent;
+    border: none;
+    padding: 0.2rem 0;
+    white-space: normal;
+    word-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.object-item:hover {
+    transform: translateX(8px);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.object-item.active {
+    transform: translateX(15px);
+    font-weight: 900;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+/* ===== ПРАВАЯ КОЛОНКА (КАРУСЕЛЬ) ===== */
+.right-column {
+    width: 60%;
+    max-width: 800px;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Минималистичные стрелки */
+.carousel-arrow {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.carousel-arrow:hover {
+    opacity: 1;
+}
+
+.carousel-arrow.left {
+    left: 20px;
+    transform: translateY(-50%) rotate(135deg);
+}
+
+.carousel-arrow.right {
+    right: 20px;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Координаты */
+.object-coords {
+    margin-top: 1rem;
+    padding: 1rem 0;
+    background: transparent;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    width: 100%;
+}
+
+.coords-link {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding-bottom: 3px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.coords-link:hover {
+    transform: scale(1.05);
+}
+
+.coords-link.disabled {
+    cursor: default;
+    opacity: 0.7;
+    font-weight: 700;
+    transform: none;
+}
+
+/* ===== КНОПКА "ВСЕ ФОТО ТУТ" ===== */
+.gallery-social-btn {
+    position: relative;
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    height: 60px;
+}
+
+/* Основная кнопка */
+.social-btn-main {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    padding: 0.8rem 2.5rem;
+    border: 2px solid white;
+    background: transparent;
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: nowrap;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.social-btn-main:hover {
+    background: white;
+    color: black;
+}
+
+/* Кнопки соцсетей */
+.social-btn-telegram,
+.social-btn-vk {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    padding: 0.8rem 2.5rem;
+    border: 2px solid white;
+    background: transparent;
+    transition: opacity 0.9s ease 0.3s, transform 1.2s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.2s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0.7);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.social-btn-telegram {
+    right: 50%;
+    margin-right: 1rem;
+    transform: translate(50%, -50%) scale(0.7);
+}
+
+.social-btn-vk {
+    left: 50%;
+    margin-left: 1rem;
+    transform: translate(-50%, -50%) scale(0.7);
+}
+
+/* Ховер-эффект */
+.gallery-social-btn:hover .social-btn-main {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+    transition: opacity 0.6s ease, transform 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.gallery-social-btn:hover .social-btn-telegram,
+.gallery-social-btn:hover .social-btn-vk {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%) scale(1);
+}
+
+/* Ховер на самих кнопках */
+.social-btn-telegram:hover,
+.social-btn-vk:hover {
+    background: white;
+    color: black;
+    transform: translate(0, -50%) scale(1.05);
+    transition: all 0.4s ease;
+    z-index: 3;
+}
+
+/* ===== СКРЫВАЕМ МОБИЛЬНЫЕ ЭЛЕМЕНТЫ НА ПК ===== */
+@media screen and (min-width: 769px) {
+    .mobile-social-buttons {
+        display: none !important;
+    }
+}
+
+/* ===== СКРЫВАЕМ ПК ЭЛЕМЕНТЫ НА МОБИЛКАХ ===== */
+@media screen and (max-width: 768px) {
+    .gallery-social-btn {
+        display: none !important;
+    }
+}
