@@ -1,35 +1,15 @@
-# ========================================
-# ROBOTS.TXT - SCOTT WORK
-# ========================================
+# robots.txt для SCOTT WORK
+# Разрешаем индексацию всего сайта
 
 User-agent: *
-Disallow: /py/
-Disallow: /backups/
-Disallow: /versions/
-Disallow: /deploy/
-Disallow: /private/
-Disallow: /temp/
-Disallow: /test/
-Disallow: /logs/
-Disallow: /node_modules/
-Disallow: /.git/
 Allow: /
 
-User-agent: Googlebot
+# Запрещаем индексацию служебных страниц (если такие есть)
+Disallow: /js/
+Disallow: /css/
 Disallow: /py/
-Disallow: /backups/
-Disallow: /versions/
-Disallow: /deploy/
-Disallow: /private/
-Allow: /
+Disallow: /tools/
+Disallow: /local-server/
 
-User-agent: Yandex
-Disallow: /py/
-Disallow: /backups/
-Disallow: /versions/
-Disallow: /deploy/
-Disallow: /private/
-Allow: /
-Host: https://scottwork.ru
-
-# Sitemap: https://scottwork.ru/sitemap.xml
+# Указываем путь к карте сайта
+Sitemap: https://scottwork.vercel.app/sitemap.xml
