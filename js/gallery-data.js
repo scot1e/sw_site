@@ -135,7 +135,7 @@ const galleryData = [
   {
     "id": "lesnoy",
     "name": "ЛЕСНОЙ",
-    "bg": "images/gallery/lesnoy/bg.jpg",
+    "bg": "images/gallery/lesnoy/bg.JPG",
     "objects": [
       {
         "name": "Баня №2",
@@ -234,7 +234,7 @@ const galleryData = [
   {
     "id": "other",
     "name": "ПРОЧЕЕ",
-    "bg": "images/gallery/other/bg.jpg",
+    "bg": "images/gallery/other/bg.JPG",
     "objects": [
       {
         "name": "Чащавита",
@@ -359,7 +359,7 @@ const galleryData = [
   {
     "id": "tagil",
     "name": "НИЖНИЙ ТАГИЛ",
-    "bg": "images/gallery/tagil/bg.jpg",
+    "bg": "images/gallery/tagil/bg.JPG",
     "objects": [
       {
         "name": "Демидовский завод",
