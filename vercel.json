@@ -2,6 +2,13 @@
   "cleanUrls": true,
   "trailingSlash": false,
   
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1.html"
+    }
+  ],
+  
   "headers": [
     {
       "source": "/(.*)",
@@ -23,14 +30,6 @@
           "value": "strict-origin-when-cross-origin"
         }
       ]
-    }
-  ],
-  
-  "redirects": [
-    {
-      "source": "/old-page",
-      "destination": "/new-page",
-      "permanent": true
     }
   ]
 }
