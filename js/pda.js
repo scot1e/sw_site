@@ -56,61 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (pdaHintClose) pdaHintClose.addEventListener('click', hideHint);
-
-    // ===== ПЛАШКА «ПОВЕРНИ ТЕЛЕФОН» =====
-    function isMobilePortrait() {
-        return window.innerWidth <= 900 &&
-               window.innerHeight > window.innerWidth;
-    }
-
-    function showRotateHint() {
-        if (document.getElementById('pdaRotateHint')) return;
-
-        const hint = document.createElement('div');
-        hint.className = 'pda-rotate-hint';
-        hint.id = 'pdaRotateHint';
-        hint.innerHTML = `
-            <span class="pda-rotate-hint-icon">📱</span>
-            <span class="pda-rotate-hint-text">Поверни телефон горизонтально — КПК раскроется полностью</span>
-        `;
-        document.body.appendChild(hint);
-    }
-
-    function hideRotateHint() {
-        const hint = document.getElementById('pdaRotateHint');
-        if (hint) hint.remove();
-    }
-
-    function checkOrientation() {
-        if (isMobilePortrait()) {
-            // Портрет: показываем «поверни», скрываем подсказку карты
-            showRotateHint();
-            if (pdaHint) pdaHint.style.display = 'none';
-        } else {
-            // ПК / landscape: скрываем «поверни», показываем подсказку карты
-            hideRotateHint();
-            if (pdaHint && pdaHint.parentNode) {
-                pdaHint.style.display = '';
-                if (!pdaHint.dataset.autohideDone) {
-                    pdaHint.dataset.autohideDone = '1';
-                    setTimeout(hideHint, 8000);
-                }
-            }
-        }
-    }
-
-    // Первая проверка
-    setTimeout(checkOrientation, 500);
-
-    // События
-    window.addEventListener('orientationchange', () => {
-        setTimeout(checkOrientation, 300);
-    });
-    window.addEventListener('resize', () => {
-        checkOrientation();
-        if (map) setTimeout(() => map.invalidateSize(), 200);
-        if (window.__syncHikesSidebar) setTimeout(window.__syncHikesSidebar, 200);
-    });
+    setTimeout(hideHint, 8000);
 
     // ===== КАРТА =====
     let map = null;
@@ -197,7 +143,17 @@ document.addEventListener('DOMContentLoaded', function () {
         photoModalTitle.textContent = obj.name;
         renderPhotoSlides();
         updatePhotoCarousel();
+        photoModal.style.display = '';
         photoModal.classList.add('active');
+    }
+
+    function closePhotoModal() {
+        photoModal.classList.remove('active');
+        photoModal.style.display = 'none';
+        // Сброс display через тик, чтобы CSS-правило снова работало
+        setTimeout(() => {
+            photoModal.style.display = '';
+        }, 50);
     }
 
     function renderPhotoSlides() {
@@ -227,13 +183,11 @@ document.addEventListener('DOMContentLoaded', function () {
         updatePhotoCarousel();
     });
 
-    if (photoModalClose) photoModalClose.addEventListener('click', () => {
-        photoModal.classList.remove('active');
-    });
+    if (photoModalClose) photoModalClose.addEventListener('click', closePhotoModal);
 
     if (photoModal) {
         photoModal.addEventListener('click', (e) => {
-            if (e.target === photoModal) photoModal.classList.remove('active');
+            if (e.target === photoModal) closePhotoModal();
         });
     }
 
@@ -257,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('keydown', (e) => {
         if (!photoModal || !photoModal.classList.contains('active')) return;
-        if (e.key === 'Escape') photoModal.classList.remove('active');
+        if (e.key === 'Escape') closePhotoModal();
         if (e.key === 'ArrowLeft') photoPrev && photoPrev.click();
         if (e.key === 'ArrowRight') photoNext && photoNext.click();
     });

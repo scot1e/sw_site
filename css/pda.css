@@ -52,7 +52,7 @@ body.pda-page {
     background: var(--pda-panel);
     border: 1px solid var(--pda-border);
     border-radius: 6px 6px 0 0;
-    z-index: 10;
+    z-index: 9999;
     flex-shrink: 0;
     min-height: 58px;
 }
@@ -268,7 +268,7 @@ body.pda-page {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    z-index: 600;
+    z-index: 11000;
     box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     max-width: 90%;
     animation: hintAppear 0.3s ease;
@@ -298,60 +298,14 @@ body.pda-page {
     to { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* ===== ПЛАШКА «ПОВЕРНИ ТЕЛЕФОН» ===== */
-.pda-rotate-hint {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(24, 22, 20, 0.96);
-    border: 1px solid var(--pda-border);
-    border-radius: 8px;
-    padding: 0.9rem 1.2rem;
-    color: var(--pda-text);
-    font-family: var(--pda-font);
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    z-index: 800;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
-    max-width: calc(100vw - 24px);
-    text-align: center;
-    animation: hintAppear 0.35s ease;
-}
-
-.pda-rotate-hint-icon {
-    font-size: 1.2rem;
-    animation: rotateIcon 2.5s infinite;
-    display: inline-block;
-    flex-shrink: 0;
-}
-
-@keyframes rotateIcon {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(90deg); }
-}
-
-.pda-rotate-hint-text {
-    line-height: 1.35;
-    color: rgba(232, 228, 222, 0.9);
-}
-
-/* Крестик у плашки «поверни» скрыт — плашку нельзя закрыть */
-.pda-rotate-hint-close {
-    display: none;
-}
-
 /* ===== МОДАЛКА С ФОТО ===== */
 .pda-modal {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.92);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    z-index: 700;
+    z-index: 10000;
     display: none;
     align-items: center;
     justify-content: center;
@@ -359,7 +313,15 @@ body.pda-page {
     overflow: hidden;
 }
 
-.pda-modal.active { display: flex; }
+.pda-modal.active {
+    display: flex;
+}
+
+.pda-modal:not(.active) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
 
 .pda-modal-inner {
     width: 100%;
@@ -905,7 +867,6 @@ body.pda-page {
 
     .pda { padding: 6px; }
 
-    /* Шапка — в две строки */
     .pda-header {
         flex-wrap: wrap;
         padding: 0.55rem 0.8rem;
@@ -941,7 +902,6 @@ body.pda-page {
         letter-spacing: 1.5px;
     }
 
-    /* КАРТА — зум в правом нижнем углу, подсказка скрыта */
     .leaflet-bottom.leaflet-right {
         bottom: 6px;
         right: 6px;
@@ -950,19 +910,13 @@ body.pda-page {
         margin: 0 !important;
     }
 
-    /* Скрываем подсказку карты на портрете */
     .pda-hint {
-        display: none !important;
+        font-size: 0.72rem;
+        padding: 0.5rem 0.6rem;
+        bottom: 8px;
+        max-width: calc(100vw - 20px);
     }
-
-    /* Плашка «поверни» — крупнее, без крестика */
-    .pda-rotate-hint {
-        bottom: 20px;
-        padding: 0.9rem 1.2rem;
-        font-size: 0.85rem;
-        gap: 0.8rem;
-        justify-content: center;
-    }
+    .pda-hint-icon { font-size: 0.9rem; }
 
     /* МОДАЛКА — на весь экран */
     .pda-modal {
@@ -1025,10 +979,7 @@ body.pda-page {
         -webkit-backdrop-filter: blur(6px);
     }
 
-    /* ===================================================
-       ПОХОДЫ — Grid: [плеер] [карусель], по центру
-       =================================================== */
-
+    /* ПОХОДЫ — Grid: [плеер] [карусель], по центру */
     #screen-hikes.pda-section.active {
         display: block !important;
     }
@@ -1103,7 +1054,6 @@ body.pda-page {
         display: block;
     }
 
-    /* Сайдбар — без рамки и фона */
     .pda-hikes-sidebar {
         all: unset;
         display: flex;
@@ -1161,7 +1111,6 @@ body.pda-page {
         filter: brightness(1);
     }
 
-    /* Заглушка «видео только на YouTube» */
     .pda-hikes-preview {
         all: unset;
         display: block;
