@@ -266,7 +266,7 @@ const galleryData = [
           "images/gallery/other/DREDGE№27/photo_2023-01-29_23-12-53 (3).jpg",
           "images/gallery/other/DREDGE№27/photo_2023-01-29_23-12-53.jpg"
         ],
-        "coord_name": "",
+        "coord_name": "58.78023499943574, 59.74818882884273",
         "coord_url": "#"
       },
       {

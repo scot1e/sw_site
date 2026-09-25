@@ -5,162 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" href="favicon.png">
-    
-    <title>ROADTONOWHERE — SCOTT WORK</title>
+
+    <title>ROADTONOWHERE</title>
     <meta name="description" content="RoadtoNowhere — походы, путешествия и видео-дневники SCOTT WORK. Походные записки и заброшенные места.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://scottwork.vercel.app/roadtonowhere.html">
-    
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://scottwork.vercel.app/roadtonowhere.html">
     <meta property="og:title" content="ROADTONOWHERE — SCOTT WORK">
     <meta property="og:description" content="Походы, путешествия и видео-дневники SCOTT WORK.">
     <meta property="og:image" content="https://scottwork.vercel.app/images/og-image.jpg">
-    
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ROADTONOWHERE — SCOTT WORK">
     <meta name="twitter:description" content="Походы и видео-дневники SCOTT WORK.">
     <meta name="twitter:image" content="https://scottwork.vercel.app/images/og-image.jpg">
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.css" />
+
     <link rel="stylesheet" href="css/loader.css">
-
-    <!-- Prefetch страниц -->
-    <link rel="prefetch" href="releases.html">
-    <link rel="prefetch" href="gallery.html">
-    <link rel="prefetch" href="roadtonowhere.html">
-    <link rel="prefetch" href="hikes.html">
-     
-    <!-- DNS Prefetch для внешних ресурсов -->
-    <link rel="dns-prefetch" href="https://img.youtube.com">
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    
-    <!-- ПК-стили -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/scale.css">
-    <link rel="stylesheet" href="css/road.css">
-    
-    <!-- Мобильные стили -->
-    <link rel="stylesheet" href="mobileadapt/mobile-base.css">
-    <link rel="stylesheet" href="mobileadapt/mobile-road.css">
-    <link rel="stylesheet" href="mobileadapt/mobile-releases.css">
-    <link rel="stylesheet" href="mobileadapt/mobile-gallery.css">
-    <link rel="stylesheet" href="mobileadapt/mobile-hikes.css">
-
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Road to Nowhere",
-    "description": "Походы, путешествия и видео-дневники SCOTT WORK. Походные записки и заброшенные места Урала.",
-    "url": "https://scottwork.vercel.app/roadtonowhere.html",
-    "about": {
-        "@type": "MusicGroup",
-        "name": "SCOTT WORK"
-    },
-    "author": {
-        "@type": "Person",
-        "name": "Scott Work"
-    },
-    "blogPost": [
-        {
-            "@type": "BlogPosting",
-            "name": "Походы",
-            "description": "Видео-дневники походов и путешествий",
-            "url": "https://scottwork.vercel.app/hikes.html"
-        }
-    ]
-}
-</script>
+    <link rel="stylesheet" href="css/pda.css">
 </head>
-<body>
-    <!-- ШАПКА -->
-    <header class="site-header">
-        <div class="header-container">
-            <a href="index.html" class="header-link">SCOTT WORK</a>
-            
-            <div class="burger-menu">
-                <div class="burger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            
-            <nav class="header-nav">
-                <a href="releases.html" class="header-link">РЕЛИЗЫ</a>
-                <a href="roadtonowhere.html" class="header-link">ROADTONOWHERE</a>
+<body class="pda-page">
+
+    <div class="pda">
+
+        <!-- ШАПКА КПК -->
+        <header class="pda-header">
+            <a href="index.html" class="pda-logo">SCOTT WORK</a>
+
+            <nav class="pda-nav">
+                <button class="pda-nav-btn active" data-screen="map">КАРТА</button>
+                <button class="pda-nav-btn" data-screen="hikes">ПОХОДЫ</button>
+                <button class="pda-nav-btn" data-screen="notes">ЗАПИСКИ</button>
             </nav>
-        </div>
-        
-        <div class="mobile-nav">
-            <a href="releases.html" class="mobile-nav-link">РЕЛИЗЫ</a>
-            <a href="roadtonowhere.html" class="mobile-nav-link">ROADTONOWHERE</a>
-        </div>
-    </header>
-    
-    <section class="intro-section full-screen">
-        <video class="intro-video" autoplay muted loop playsinline>
-            <source src="videos/roadtonowhere-intro.mp4" type="video/mp4">
-        </video>
-        <div class="intro-overlay"></div>
-        <div class="intro-content"></div>
-        <a href="#road-block" class="scroll-arrow">
-            <span class="arrow-down"></span>
-        </a>
-    </section>
 
-    <section id="road-block" class="road-block full-screen">
-        <div class="road-layer center-layer">
-            <div class="road-photo" style="background-image: url('images/road-center.JPG');"></div>
-            <div class="road-content">
-                <h2 class="road-title">ПОХОДЫ</h2>
-                <p class="road-hover-text">Ты прости, времени не так много, но всё же..</p>
-                <a href="hikes.html" class="road-button">ПРОГУЛЯЙСЯ СО МНОЙ</a>
-            </div>
-        </div>
-        <div class="road-layer right-layer">
-            <div class="road-photo" style="background-image: url('images/road-right.JPG');"></div>
-            <div class="road-content">
-                <h2 class="road-title"></p>ПОХОДНЫЕ</p> ЗАПИСКИ</h2>
-                <p class="road-hover-text">???</p>
-                <a href="404.html" class="road-button">СКОРО</a>
-            </div>
-        </div>
-        <div class="road-layer left-layer">
-            <div class="road-photo" style="background-image: url('images/road-left.JPG');"></div>
-            <div class="road-content">
-                <h2 class="road-title">ГАЛЕРЕЯ</h2>
-                <p class="road-hover-text">Взгляд в прошлое</p>
-                <a href="gallery.html" class="road-button">ВОСПОМИНАНИЯ?</a>
-            </div>
-        </div>
-    </section>
+            <a href="index.html" class="pda-close" title="На главную">✕</a>
+        </header>
 
-    <!-- ПОДВАЛ -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-copyright">© 2026 SCOTT WORK</div>
-        </div>
-    </footer>
+        <!-- ЭКРАН КПК -->
+        <main class="pda-screen" id="pdaScreen">
 
-    <!-- СКРИПТЫ -->
-    <script src="js/browser-detector.js"></script>
-    <script src="js/road.js"></script>
-    <script src="js/snap.js"></script>
-    <script src="js/mobile-menu.js"></script>
-    <script src="js/zippo.local.js"></script>
-    <script src="js/image-optimizer.js"></script>
+            <!-- ===== КАРТА ===== -->
+            <section class="pda-section active" id="screen-map">
+                <div id="mapContainer" class="pda-map"></div>
 
-    <!-- Экран загрузки с глитчем -->
+                <div class="pda-hint" id="pdaHint">
+                    <span class="pda-hint-icon">🗺️</span>
+                    <span class="pda-hint-text">Наведи на точку → название. Нажми → фото.</span>
+                    <button class="pda-hint-close" id="pdaHintClose">✕</button>
+                </div>
+
+                <div class="pda-modal" id="photoModal">
+                    <div class="pda-modal-inner">
+                        <div class="pda-modal-header">
+                            <span class="pda-modal-title" id="photoModalTitle">—</span>
+                            <button class="pda-modal-close" id="photoModalClose">✕</button>
+                        </div>
+                        <div class="pda-modal-carousel">
+                            <button class="pda-modal-arrow left" id="photoPrev">&lt;</button>
+                            <div class="pda-modal-track" id="photoTrack"></div>
+                            <button class="pda-modal-arrow right" id="photoNext">&gt;</button>
+                        </div>
+                        <div class="pda-modal-counter" id="photoCounter">0 / 0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ПОХОДЫ ===== -->
+            <section class="pda-section" id="screen-hikes">
+                <div class="pda-hikes">
+                    <aside class="pda-hikes-sidebar">
+                        <div class="pda-hikes-list" id="hikesList"></div>
+                    </aside>
+                    <div class="pda-hikes-main">
+                        <div class="pda-hikes-title" id="videoTitle">Загрузка...</div>
+                        <div class="pda-hikes-player" id="hikesMain"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ЗАПИСКИ ===== -->
+            <section class="pda-section" id="screen-notes">
+                <div class="pda-notes">
+                    <aside class="pda-notes-sidebar">
+                        <div class="pda-notes-cats-wrap">
+                            <div class="pda-notes-cats" id="notesCats">
+
+                                <!-- АУДИО -->
+                                <button class="pda-notes-cat active" data-cat="audio" title="Аудио">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                        <line x1="12" x2="12" y1="19" y2="22"/>
+                                    </svg>
+                                </button>
+
+                                <!-- ЗАМЕТКИ -->
+                                <button class="pda-notes-cat" data-cat="notes" title="Заметки">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                        <line x1="8" x2="16" y1="13" y2="13"/>
+                                        <line x1="8" x2="16" y1="17" y2="17"/>
+                                        <line x1="8" x2="10" y1="9" y2="9"/>
+                                    </svg>
+                                </button>
+
+                                <!-- ИНСТРУКЦИИ -->
+                                <button class="pda-notes-cat" data-cat="guides" title="Инструкции">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- МЕСТА -->
+                                <button class="pda-notes-cat" data-cat="places" title="Места">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </button>
+
+                                <!-- СНАРЯЖЕНИЕ -->
+                                <button class="pda-notes-cat" data-cat="gear" title="Снаряжение">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/>
+                                        <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>
+                                        <path d="M8 21v-5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v5"/>
+                                    </svg>
+                                </button>
+
+                                <!-- ПЛАНЫ -->
+                                <button class="pda-notes-cat" data-cat="plans" title="Планы">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                                        <line x1="16" x2="16" y1="2" y2="6"/>
+                                        <line x1="8" x2="8" y1="2" y2="6"/>
+                                        <line x1="3" x2="21" y1="10" y2="10"/>
+                                    </svg>
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="pda-notes-list" id="notesList">
+                            <div class="pda-notes-empty">ПУСТО</div>
+                        </div>
+                    </aside>
+
+                    <div class="pda-notes-content" id="notesContent">
+                        <div class="pda-notes-placeholder" id="notesPlaceholder">
+                            <div class="pda-notes-placeholder-text" data-text="ЗАПИСИ ВЕДУТСЯ">
+                                ЗАПИСИ ВЕДУТСЯ<span class="pda-dots"><span>.</span><span>.</span><span>.</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.js"></script>
+
+    <script src="js/gallery-data.js"></script>
+    <script src="js/pda.js"></script>
+
     <div class="loader-overlay" id="pageLoader">
         <div class="loader-content">
             <div class="loader-text" id="loaderText" data-text="ЗАГРУЗКА">ЗАГРУЗКА</div>
-            <div class="loader-subtext" id="loaderSubtext">SCOTT WORK</div>
+            <div class="loader-subtext" id="loaderSubtext">ROADTONOWHERE</div>
         </div>
     </div>
-
-    <!-- Скрипт для загрузчика -->
     <script src="js/page-loader.js"></script>
+
 </body>
 </html>

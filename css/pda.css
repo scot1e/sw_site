@@ -1,0 +1,1301 @@
+/* ==========================================================
+   SCOTT WORK — КПК (ROADTONOWHERE)
+   Вариант C: ПК + мобилка (portrait/landscape)
+   ========================================================== */
+
+:root {
+    --pda-bg:        #181614;
+    --pda-panel:     #1f1d1a;
+    --pda-panel-2:   #262320;
+    --pda-border:    #2e2b27;
+    --pda-grid:      rgba(255, 255, 255, 0.022);
+    --pda-text:      #e8e4de;
+    --pda-text-dim:  #8a857e;
+    --pda-text-mute: #5a5651;
+    --pda-accent:    #d4cfc7;
+    --pda-glow:      rgba(255, 255, 255, 0.15);
+    --pda-font:      'Share Tech Mono', 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body.pda-page {
+    background: #0d0c0b;
+    font-family: var(--pda-font);
+    color: var(--pda-text);
+}
+
+/* ===== КОРПУС ===== */
+.pda {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--pda-bg);
+    padding: 10px;
+}
+
+/* ===== ШАПКА ===== */
+.pda-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1.4rem;
+    background: var(--pda-panel);
+    border: 1px solid var(--pda-border);
+    border-radius: 6px 6px 0 0;
+    z-index: 10;
+    flex-shrink: 0;
+    min-height: 58px;
+}
+
+.pda-logo {
+    color: var(--pda-text);
+    font-family: var(--pda-font);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 3px;
+    text-shadow: 0.5px 0 0 rgba(255,255,255,0.25), -0.5px 0 0 rgba(255,255,255,0.1);
+    transition: opacity 0.2s;
+    animation: textFlicker 7s infinite;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.pda-logo:hover { opacity: 0.75; }
+
+.pda-nav {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 2.5rem;
+    z-index: 1;
+}
+
+.pda-nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--pda-text-mute);
+    font-family: var(--pda-font);
+    font-size: 1.05rem;
+    padding: 0.4rem 0.2rem;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: color 0.25s ease;
+    text-transform: uppercase;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.pda-nav-btn:hover { color: var(--pda-text-dim); }
+
+.pda-nav-btn.active {
+    color: var(--pda-text);
+    font-weight: 700;
+    text-shadow: 0 0 12px var(--pda-glow), 0.5px 0 0 rgba(255,255,255,0.3);
+    animation: textFlicker 5s infinite;
+}
+
+.pda-close {
+    color: var(--pda-text-mute);
+    font-family: var(--pda-font);
+    font-size: 1.4rem;
+    text-decoration: none;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.25s;
+    line-height: 1;
+    z-index: 2;
+}
+
+.pda-close:hover {
+    color: var(--pda-text);
+    background: rgba(255,255,255,0.05);
+    transform: rotate(90deg);
+}
+
+/* ===== ЭКРАН ===== */
+.pda-screen {
+    position: relative;
+    flex: 1;
+    background: var(--pda-bg);
+    border: 1px solid var(--pda-border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+}
+
+.pda-screen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(0deg, var(--pda-grid) 0, var(--pda-grid) 1px, transparent 1px, transparent 28px),
+        repeating-linear-gradient(90deg, var(--pda-grid) 0, var(--pda-grid) 1px, transparent 1px, transparent 28px),
+        repeating-linear-gradient(to bottom, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 3px);
+    z-index: 500;
+    mix-blend-mode: overlay;
+}
+
+.pda-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.012);
+    z-index: 501;
+    animation: pdaFlicker 9s infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes pdaFlicker {
+    0%, 94%, 100% { opacity: 0.4; }
+    95% { opacity: 1; }
+    96% { opacity: 0.2; }
+    97% { opacity: 0.85; }
+    98% { opacity: 0.5; }
+}
+
+@keyframes textFlicker {
+    0%, 92%, 100% { opacity: 1; }
+    93% { opacity: 0.6; }
+    94% { opacity: 1; }
+    95% { opacity: 0.85; }
+    96% { opacity: 1; }
+}
+
+.pda-section {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+    overflow: hidden;
+}
+
+.pda-section.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== КАРТА ===== */
+.pda-map { width: 100%; height: 100%; background: var(--pda-bg); }
+
+.leaflet-container {
+    background: var(--pda-bg) !important;
+    font-family: var(--pda-font) !important;
+}
+
+.leaflet-control-zoom a {
+    background: var(--pda-panel) !important;
+    color: var(--pda-text) !important;
+    border: 1px solid var(--pda-border) !important;
+    font-family: var(--pda-font) !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: var(--pda-panel-2) !important;
+    color: var(--pda-accent) !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(24, 22, 20, 0.85) !important;
+    color: var(--pda-text-mute) !important;
+    font-family: var(--pda-font) !important;
+    font-size: 0.62rem !important;
+}
+
+.leaflet-control-attribution a { color: var(--pda-text-dim) !important; }
+
+.leaflet-tooltip {
+    background: var(--pda-panel) !important;
+    border: 1px solid var(--pda-border) !important;
+    color: var(--pda-text) !important;
+    font-family: var(--pda-font) !important;
+    font-size: 0.82rem !important;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 14px rgba(0,0,0,0.6) !important;
+    letter-spacing: 0.5px;
+}
+
+.leaflet-tooltip::before { border-top-color: var(--pda-border) !important; }
+
+.pda-marker {
+    font-size: 22px;
+    line-height: 1;
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.6);
+    cursor: pointer;
+    transition: transform 0.2s;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pda-marker:hover { transform: scale(1.25); }
+
+/* ===== ПОДСКАЗКА КАРТЫ ===== */
+.pda-hint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(24, 22, 20, 0.95);
+    border: 1px solid var(--pda-border);
+    border-radius: 6px;
+    padding: 0.7rem 1rem 0.7rem 1.2rem;
+    color: var(--pda-text);
+    font-family: var(--pda-font);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 600;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    max-width: 90%;
+    animation: hintAppear 0.3s ease;
+}
+
+.pda-hint-icon { font-size: 1.1rem; }
+
+.pda-hint-close {
+    background: none;
+    border: none;
+    color: var(--pda-text-mute);
+    font-family: var(--pda-font);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.pda-hint-close:hover {
+    color: var(--pda-text);
+    background: rgba(255,255,255,0.06);
+}
+
+@keyframes hintAppear {
+    from { opacity: 0; transform: translate(-50%, 20px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ===== ПЛАШКА «ПОВЕРНИ ТЕЛЕФОН» ===== */
+.pda-rotate-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(24, 22, 20, 0.96);
+    border: 1px solid var(--pda-border);
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    color: var(--pda-text);
+    font-family: var(--pda-font);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    z-index: 800;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    max-width: calc(100vw - 24px);
+    text-align: center;
+    animation: hintAppear 0.35s ease;
+}
+
+.pda-rotate-hint-icon {
+    font-size: 1.2rem;
+    animation: rotateIcon 2.5s infinite;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+@keyframes rotateIcon {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(90deg); }
+}
+
+.pda-rotate-hint-text {
+    line-height: 1.35;
+    color: rgba(232, 228, 222, 0.9);
+}
+
+/* Крестик у плашки «поверни» скрыт — плашку нельзя закрыть */
+.pda-rotate-hint-close {
+    display: none;
+}
+
+/* ===== МОДАЛКА С ФОТО ===== */
+.pda-modal {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 700;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.pda-modal.active { display: flex; }
+
+.pda-modal-inner {
+    width: 100%;
+    max-width: 1100px;
+    max-height: 100%;
+    background: var(--pda-bg);
+    border: 1px solid var(--pda-border);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+.pda-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid var(--pda-border);
+    background: var(--pda-panel);
+    flex-shrink: 0;
+}
+
+.pda-modal-title {
+    color: var(--pda-text);
+    font-family: var(--pda-font);
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+}
+
+.pda-modal-close {
+    background: none;
+    border: 1px solid var(--pda-border);
+    color: var(--pda-text-dim);
+    font-family: var(--pda-font);
+    font-size: 1rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.pda-modal-close:hover {
+    background: var(--pda-text);
+    color: var(--pda-bg);
+    border-color: var(--pda-text);
+}
+
+.pda-modal-carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: 70vh;
+    background: var(--pda-bg);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.pda-modal-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease;
+}
+
+.pda-modal-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--pda-bg);
+}
+
+.pda-modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background: rgba(24, 22, 20, 0.75);
+    border: 1px solid var(--pda-border);
+    color: var(--pda-text);
+    font-family: var(--pda-font);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 5;
+    padding: 0;
+}
+
+.pda-modal-arrow:hover {
+    background: var(--pda-text);
+    color: var(--pda-bg);
+    border-color: var(--pda-text);
+}
+
+.pda-modal-arrow.left { left: 12px; }
+.pda-modal-arrow.right { right: 12px; }
+
+.pda-modal-counter {
+    padding: 0.7rem;
+    text-align: center;
+    color: var(--pda-text-mute);
+    font-family: var(--pda-font);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    border-top: 1px solid var(--pda-border);
+    background: var(--pda-panel);
+    flex-shrink: 0;
+}
+
+/* ===== ПОХОДЫ (базовые — ПК и landscape) ===== */
+.pda-hikes {
+    display: flex;
+    gap: 1.2rem;
+    width: 100%;
+    height: 100%;
+    padding: 1.2rem;
+    align-items: flex-end;
+}
+
+.pda-hikes-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid var(--pda-border);
+    border-radius: 4px;
+    background: var(--pda-panel);
+    padding: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pda-text-mute) transparent;
+    position: relative;
+    z-index: 10;
+    align-self: flex-end;
+}
+
+.pda-hikes-sidebar::-webkit-scrollbar { width: 4px; }
+.pda-hikes-sidebar::-webkit-scrollbar-track { background: transparent; }
+.pda-hikes-sidebar::-webkit-scrollbar-thumb {
+    background: var(--pda-text-mute);
+    border-radius: 4px;
+}
+
+.pda-hikes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.pda-hikes-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    max-width: calc((100vh - 180px) * 16 / 9);
+    position: relative;
+    padding-top: 2.2rem;
+}
+
+.pda-hikes-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: var(--pda-text);
+    font-family: var(--pda-font);
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 8px rgba(255,255,255,0.12);
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.pda-hikes-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--pda-border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.8);
+}
+
+.pda-hikes-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.pda-hikes-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    background: var(--pda-panel-2);
+    z-index: 11;
+}
+
+.pda-hikes-item:hover { border-color: var(--pda-text-mute); }
+
+.pda-hikes-item.active {
+    border-color: var(--pda-text);
+    box-shadow: 0 0 10px rgba(255,255,255,0.15);
+}
+
+.pda-hikes-thumb {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+    transition: filter 0.2s;
+}
+
+.pda-hikes-item:hover .pda-hikes-thumb,
+.pda-hikes-item.active .pda-hikes-thumb {
+    filter: brightness(1);
+}
+
+.pda-hikes-preview {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px) brightness(0.35);
+}
+
+.pda-hikes-preview-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--pda-text);
+    font-family: var(--pda-font);
+    gap: 1rem;
+    z-index: 2;
+}
+
+.pda-hikes-preview-text {
+    font-size: 0.9rem;
+    color: var(--pda-text-dim);
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.pda-hikes-preview-btn {
+    color: var(--pda-text);
+    border: 1px solid var(--pda-text-mute);
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    font-family: var(--pda-font);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.pda-hikes-preview-btn:hover {
+    background: var(--pda-text);
+    color: var(--pda-bg);
+    border-color: var(--pda-text);
+}
+
+/* ===== ЗАПИСКИ ===== */
+.pda-notes {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.pda-notes-sidebar {
+    width: 25%;
+    height: 100%;
+    border-right: 1px solid var(--pda-border);
+    background: var(--pda-panel);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+}
+
+.pda-notes-cats-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 0.6rem;
+    border-bottom: 1px solid var(--pda-border);
+    background: var(--pda-bg);
+    flex-shrink: 0;
+    min-height: 60px;
+}
+
+.pda-notes-cats {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.pda-notes-cats::-webkit-scrollbar { display: none; }
+
+.pda-notes-cat {
+    background: transparent;
+    border: none;
+    color: var(--pda-text);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.45;
+    padding: 0;
+}
+
+.pda-notes-cat svg {
+    display: block;
+    stroke: currentColor;
+    width: 22px;
+    height: 22px;
+}
+
+.pda-notes-cat:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.05);
+}
+
+.pda-notes-cat.active {
+    opacity: 1;
+    background: rgba(255,255,255,0.08);
+    box-shadow: inset 0 -2px 0 var(--pda-text);
+}
+
+.pda-notes-list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.5rem 0.4rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pda-text-mute) transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.pda-notes-list::-webkit-scrollbar { width: 4px; }
+.pda-notes-list::-webkit-scrollbar-thumb {
+    background: var(--pda-text-mute);
+    border-radius: 4px;
+}
+
+.pda-notes-empty {
+    width: 100%;
+    color: var(--pda-text-mute);
+    font-family: var(--pda-font);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-align: center;
+    opacity: 0.7;
+    margin: auto 0;
+    padding: 2rem 0.5rem;
+    box-sizing: border-box;
+}
+
+.pda-note-item {
+    color: var(--pda-text-dim);
+    font-family: var(--pda-font);
+    font-size: 0.82rem;
+    padding: 0.55rem 0.7rem;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.15rem;
+}
+
+.pda-note-item:hover {
+    color: var(--pda-text);
+    background: rgba(255,255,255,0.04);
+    padding-left: 1rem;
+}
+
+.pda-note-item.active {
+    color: var(--pda-text);
+    background: rgba(255,255,255,0.07);
+    border-left: 2px solid var(--pda-text);
+}
+
+.pda-notes-content {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.pda-notes-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.pda-notes-placeholder-text {
+    color: var(--pda-text-dim);
+    font-family: var(--pda-font);
+    font-size: 1.6rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    position: relative;
+    animation: notesGlitch 4s infinite;
+    text-shadow: 0.5px 0 0 rgba(255,255,255,0.2), -0.5px 0 0 rgba(255,255,255,0.08);
+}
+
+.pda-notes-placeholder-text::before,
+.pda-notes-placeholder-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.pda-notes-placeholder-text::before {
+    color: rgba(255, 80, 80, 0.25);
+    animation: notesGlitchTop 3.5s infinite linear alternate-reverse;
+    z-index: -1;
+}
+
+.pda-notes-placeholder-text::after {
+    color: rgba(80, 120, 255, 0.22);
+    animation: notesGlitchBottom 4.2s infinite linear alternate-reverse;
+    z-index: -2;
+}
+
+@keyframes notesGlitch {
+    0%, 88%, 100% { transform: translate(0) skew(0); }
+    89% { transform: translate(-3px, 1px) skew(2deg); }
+    90% { transform: translate(3px, -1px) skew(-2deg); }
+    91% { transform: translate(-2px, 0) skew(0); }
+    92% { transform: translate(0); }
+}
+
+@keyframes notesGlitchTop {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-4px, -2px); }
+    40% { transform: translate(4px, 2px); }
+    60% { transform: translate(-3px, 2px); }
+    80% { transform: translate(3px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes notesGlitchBottom {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(4px, 2px); }
+    40% { transform: translate(-4px, -2px); }
+    60% { transform: translate(3px, -2px); }
+    80% { transform: translate(-3px, 2px); }
+    100% { transform: translate(0, 0); }
+}
+
+.pda-dots span {
+    animation: dotBlink 1.5s infinite;
+    display: inline-block;
+    opacity: 0.3;
+}
+.pda-dots span:nth-child(1) { animation-delay: 0s; }
+.pda-dots span:nth-child(2) { animation-delay: 0.3s; }
+.pda-dots span:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes dotBlink {
+    0%, 60%, 100% { opacity: 0.2; }
+    30% { opacity: 1; }
+}
+
+.pda-notes-content-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--pda-text-mute);
+    font-family: var(--pda-font);
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    opacity: 0.6;
+}
+
+/* ==========================================================
+   МОБИЛКА PORTRAIT (вертикально) — max-width: 900px
+   ========================================================== */
+@media (max-width: 900px) and (orientation: portrait) {
+
+    .pda { padding: 6px; }
+
+    /* Шапка — в две строки */
+    .pda-header {
+        flex-wrap: wrap;
+        padding: 0.55rem 0.8rem;
+        min-height: auto;
+        gap: 0.4rem;
+    }
+
+    .pda-logo {
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        order: 1;
+    }
+
+    .pda-close {
+        order: 2;
+        width: 30px;
+        height: 30px;
+        font-size: 1.1rem;
+    }
+
+    .pda-nav {
+        position: static;
+        transform: none;
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 0.2rem;
+    }
+
+    .pda-nav-btn {
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+
+    /* КАРТА — зум в правом нижнем углу, подсказка скрыта */
+    .leaflet-bottom.leaflet-right {
+        bottom: 6px;
+        right: 6px;
+    }
+    .leaflet-control-zoom {
+        margin: 0 !important;
+    }
+
+    /* Скрываем подсказку карты на портрете */
+    .pda-hint {
+        display: none !important;
+    }
+
+    /* Плашка «поверни» — крупнее, без крестика */
+    .pda-rotate-hint {
+        bottom: 20px;
+        padding: 0.9rem 1.2rem;
+        font-size: 0.85rem;
+        gap: 0.8rem;
+        justify-content: center;
+    }
+
+    /* МОДАЛКА — на весь экран */
+    .pda-modal {
+        padding: 0;
+        background: rgba(0, 0, 0, 0.96);
+    }
+    .pda-modal-inner {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .pda-modal-header {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        z-index: 10;
+        background: rgba(24, 22, 20, 0.85);
+        border: 1px solid var(--pda-border);
+        border-radius: 6px;
+        padding: 0.5rem 0.7rem;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
+    .pda-modal-title { font-size: 0.8rem; }
+    .pda-modal-close { width: 26px; height: 26px; font-size: 0.9rem; }
+
+    .pda-modal-carousel {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+        max-height: 100%;
+        flex: 1;
+    }
+    .pda-modal-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+        background: rgba(24, 22, 20, 0.7);
+    }
+    .pda-modal-arrow.left { left: 8px; }
+    .pda-modal-arrow.right { right: 8px; }
+
+    .pda-modal-counter {
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 1px solid var(--pda-border);
+        border-radius: 20px;
+        padding: 0.4rem 1rem;
+        background: rgba(24, 22, 20, 0.85);
+        border-top: none;
+        font-size: 0.75rem;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* ===================================================
+       ПОХОДЫ — Grid: [плеер] [карусель], по центру
+       =================================================== */
+
+    #screen-hikes.pda-section.active {
+        display: block !important;
+    }
+
+    .pda-hikes {
+        all: unset;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
+        align-content: center;
+        justify-items: center;
+        gap: 0.8rem;
+        padding: 1rem 0.6rem;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .pda-hikes-main {
+        all: unset;
+        display: block;
+        grid-row: 1;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+        padding-top: 1.8rem;
+        box-sizing: border-box;
+    }
+
+    .pda-hikes-title {
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1.8rem;
+        color: var(--pda-text);
+        font-family: var(--pda-font);
+        font-size: 0.78rem;
+        letter-spacing: 1px;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .pda-hikes-player {
+        all: unset;
+        display: block;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 1px solid var(--pda-border);
+        border-radius: 4px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 4px 25px rgba(0,0,0,0.8);
+        box-sizing: border-box;
+    }
+
+    .pda-hikes-player iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+    }
+
+    /* Сайдбар — без рамки и фона */
+    .pda-hikes-sidebar {
+        all: unset;
+        display: flex;
+        grid-row: 2;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .pda-hikes-sidebar::-webkit-scrollbar { display: none; }
+
+    .pda-hikes-list {
+        all: unset;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+
+    .pda-hikes-item {
+        all: unset;
+        display: block;
+        position: relative;
+        width: 140px;
+        height: 78.75px;
+        flex-shrink: 0;
+        border-radius: 3px;
+        overflow: hidden;
+        cursor: pointer;
+        background: var(--pda-panel-2);
+        box-sizing: border-box;
+    }
+
+    .pda-hikes-item.active {
+        outline: 2px solid var(--pda-text);
+        outline-offset: -2px;
+    }
+
+    .pda-hikes-thumb {
+        all: unset;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.6);
+        transition: filter 0.2s;
+    }
+
+    .pda-hikes-item.active .pda-hikes-thumb {
+        filter: brightness(1);
+    }
+
+    /* Заглушка «видео только на YouTube» */
+    .pda-hikes-preview {
+        all: unset;
+        display: block;
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        filter: blur(3px) brightness(0.35);
+    }
+
+    .pda-hikes-preview-overlay {
+        all: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        inset: 0;
+        padding: 1.5rem;
+        text-align: center;
+        color: var(--pda-text);
+        font-family: var(--pda-font);
+        gap: 1rem;
+        z-index: 2;
+    }
+
+    .pda-hikes-preview-text {
+        all: unset;
+        display: block;
+        font-size: 0.9rem;
+        color: var(--pda-text-dim);
+        max-width: 80%;
+        line-height: 1.5;
+    }
+
+    .pda-hikes-preview-btn {
+        all: unset;
+        display: inline-block;
+        color: var(--pda-text);
+        border: 1px solid var(--pda-text-mute);
+        padding: 0.6rem 1.4rem;
+        text-decoration: none;
+        font-family: var(--pda-font);
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        border-radius: 3px;
+        transition: all 0.2s;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    /* ЗАПИСКИ — 1/4 сверху, 3/4 снизу */
+    .pda-notes {
+        flex-direction: column;
+    }
+
+    .pda-notes-sidebar {
+        width: 100%;
+        height: 38%;
+        border-right: none;
+        border-bottom: 1px solid var(--pda-border);
+    }
+
+    .pda-notes-cats-wrap {
+        min-height: 52px;
+        padding: 0.5rem 0.4rem;
+    }
+    .pda-notes-cat { width: 36px; height: 36px; }
+    .pda-notes-cat svg { width: 20px; height: 20px; }
+
+    .pda-notes-content {
+        height: 62%;
+        padding: 1rem;
+    }
+
+    .pda-notes-placeholder-text {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+}
+
+/* ==========================================================
+   МОБИЛКА LANDSCAPE (повёрнут) — компактная версия ПК
+   ========================================================== */
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .pda { padding: 5px; }
+
+    .pda-header {
+        padding: 0.5rem 0.9rem;
+        min-height: 46px;
+    }
+
+    .pda-logo { font-size: 0.9rem; letter-spacing: 2px; }
+    .pda-close { width: 30px; height: 30px; font-size: 1.1rem; }
+
+    .pda-nav { gap: 1.8rem; }
+    .pda-nav-btn { font-size: 0.82rem; letter-spacing: 1.5px; }
+
+    .pda-hint {
+        font-size: 0.7rem;
+        padding: 0.45rem 0.8rem;
+        bottom: 8px;
+    }
+
+    .pda-hikes {
+        padding: 0.7rem;
+        gap: 0.8rem;
+    }
+    .pda-hikes-sidebar {
+        width: 170px;
+        padding: 0.4rem;
+    }
+    .pda-hikes-list { gap: 0.4rem; }
+    .pda-hikes-main { padding-top: 1.7rem; }
+    .pda-hikes-title {
+        font-size: 0.8rem;
+        height: 1.7rem;
+        letter-spacing: 1px;
+    }
+
+    .pda-notes-cats-wrap {
+        min-height: 50px;
+        padding: 0.5rem 0.4rem;
+    }
+    .pda-notes-cat { width: 34px; height: 34px; }
+    .pda-notes-cat svg { width: 18px; height: 18px; }
+    .pda-notes-empty { font-size: 0.75rem; letter-spacing: 2px; }
+    .pda-notes-placeholder-text { font-size: 1.2rem; letter-spacing: 3px; }
+    .pda-note-item { font-size: 0.75rem; padding: 0.45rem 0.6rem; }
+
+    .pda-modal { padding: 0.6rem; }
+    .pda-modal-carousel { max-height: 65vh; }
+    .pda-modal-arrow { width: 30px; height: 30px; font-size: 1rem; }
+    .pda-modal-arrow.left { left: 8px; }
+    .pda-modal-arrow.right { right: 8px; }
+}
