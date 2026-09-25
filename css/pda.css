@@ -15,6 +15,7 @@
     --pda-accent:    #d4cfc7;
     --pda-glow:      rgba(255, 255, 255, 0.15);
     --pda-font:      'Share Tech Mono', 'Courier New', monospace;
+    --pda-header-h:  58px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,9 +42,12 @@ body.pda-page {
     padding: 10px;
 }
 
-/* ===== ШАПКА ===== */
+/* ===== ШАПКА — FIXED ===== */
 .pda-header {
-    position: relative;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -53,8 +57,7 @@ body.pda-page {
     border: 1px solid var(--pda-border);
     border-radius: 6px 6px 0 0;
     z-index: 9999;
-    flex-shrink: 0;
-    min-height: 58px;
+    min-height: var(--pda-header-h);
 }
 
 .pda-logo {
@@ -133,6 +136,7 @@ body.pda-page {
 .pda-screen {
     position: relative;
     flex: 1;
+    margin-top: var(--pda-header-h);
     background: var(--pda-bg);
     border: 1px solid var(--pda-border);
     border-top: none;
@@ -865,9 +869,16 @@ body.pda-page {
    ========================================================== */
 @media (max-width: 900px) and (orientation: portrait) {
 
+    :root {
+        --pda-header-h: 92px;
+    }
+
     .pda { padding: 6px; }
 
     .pda-header {
+        top: 6px;
+        left: 6px;
+        right: 6px;
         flex-wrap: wrap;
         padding: 0.55rem 0.8rem;
         min-height: auto;
@@ -1197,11 +1208,18 @@ body.pda-page {
    ========================================================== */
 @media (max-width: 900px) and (orientation: landscape) {
 
+    :root {
+        --pda-header-h: 46px;
+    }
+
     .pda { padding: 5px; }
 
     .pda-header {
+        top: 5px;
+        left: 5px;
+        right: 5px;
         padding: 0.5rem 0.9rem;
-        min-height: 46px;
+        min-height: auto;
     }
 
     .pda-logo { font-size: 0.9rem; letter-spacing: 2px; }

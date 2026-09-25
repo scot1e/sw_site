@@ -80,8 +80,16 @@ document.addEventListener('DOMContentLoaded', function () {
             maxBounds: [[56.0, 57.0], [60.5, 63.5]],
             maxBoundsViscosity: 1.0,
             gestureHandling: true,
-            zoomControl: true
+            zoomControl: true,
+            keyboard: false        // ← отключаем клавиатуру
         }).setView([58.0, 60.0], 7);
+
+        // Отключаем фокус на контейнере карты
+        const mapContainer = document.getElementById('mapContainer');
+        if (mapContainer) {
+            mapContainer.setAttribute('tabindex', '-1');
+            mapContainer.addEventListener('focus', (e) => e.target.blur());
+        }
 
         L.tileLayer(
             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -150,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function closePhotoModal() {
         photoModal.classList.remove('active');
         photoModal.style.display = 'none';
-        // Сброс display через тик, чтобы CSS-правило снова работало
         setTimeout(() => {
             photoModal.style.display = '';
         }, 50);
